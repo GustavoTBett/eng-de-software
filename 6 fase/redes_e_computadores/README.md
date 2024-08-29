@@ -28,7 +28,7 @@ Segundo Soares, Lemos e Colcher(1995): "Uma rede de computadores se define por u
 
 - CAN (Campus Area Network): Redes que conectam múltiplas LANs dentro de uma universidade, empresa ou campus industrial. Duas ou mais LAN's
 
-![CAN](imagens/image-2.png)
+![CAN](imagens/can.png)
 
 - MAN (Metropolitan Area Network): Redes que cobrem uma cidade ou uma grande área urbana, conectando várias LANs dentro de uma região metropolitana. Usada por grandes corporações ou governos. Necessita de um ISP (internet service provider)
 

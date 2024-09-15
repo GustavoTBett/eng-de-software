@@ -2,7 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/../../.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../automacao_de_teste/GustavoTBett-Turma02-Trabalho01" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../../automacao_de_teste/unit-tests-jest" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../AbstractMethod" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../FactoryMethodTest" vcs="Git" />
   </component>
 </project>

@@ -1,56 +1,71 @@
-# O que é Arquitetura da Informação
+# Arquitetura da Informação
 
-## Introdução
-A Arquitetura da Informação (AI) é uma disciplina que visa organizar e estruturar informações de maneira que sejam facilmente acessíveis e compreensíveis. Ela é fundamental para a usabilidade e encontrabilidade de produtos e experiências de informação.
+## Definição
+Arquitetura da Informação (AI) é uma disciplina de design focada em organizar, rotular e estruturar informações de maneira que sejam localizáveis e compreensíveis pelos usuários.
 
-## Conteúdos Abordados
+## Origens
+O termo "Arquitetura da Informação" foi cunhado por **Richard Saul Wurman** nos anos 1960. Ele introduziu o conceito oficialmente em 1976 durante a Reunião Anual do Instituto Americano de Arquitetos. Em 1989, Wurman lançou o livro **"Information Anxiety"**, aprofundando a ideia de como transformar dados em compreensão.
 
-### 1. Conceito de Arquitetura da Informação
-- **Definição**: A AI é a arte e a ciência de moldar produtos e experiências de informação.
-- **Objetivo**: Apoiar a usabilidade e a encontrabilidade em ecossistemas digitais, físicos e de canais cruzados.
+## Componentes Principais
+1. **Usuário**: Refere-se às pessoas que irão utilizar o sistema ou site. São levadas em consideração suas necessidades, desejos, preocupações e comportamentos.
+2. **Conteúdo**: Inclui documentos, aplicativos, serviços e metadados que o usuário precisa acessar. O conteúdo deve ser organizado e estruturado de forma clara e intuitiva.
+3. **Contexto**: O ambiente em que a informação será apresentada, considerando fatores como os objetivos de negócios, restrições tecnológicas e culturais.
 
-### 2. Origem e Contexto
-- A AI surgiu como resposta à necessidade de organizar grandes volumes de informação em um mundo cada vez mais digital.
+## Definições Clássicas
+- Louis Rosenfeld e Peter Morville definem AI como a prática de criar estruturas de informação compreensíveis e utilizáveis.
+- Abby Covert descreve AI como a maneira de organizar as partes de algo para torná-lo compreensível.
 
-### 3. Estrutura da Arquitetura da Informação
-- **Projeto Estrutural**: Envolve a criação de sistemas de organização, rotulagem, pesquisa e navegação.
-- **Elementos**:
-  - **Conteúdo**: O que será apresentado.
-  - **Usuário**: Quem irá interagir com a informação.
-  - **Metadados**: Dados que descrevem outros dados.
-  - **Dinamismo**: A capacidade de adaptação da informação ao longo do tempo.
+## Princípios Fundamentais
+1. **Organização**: Estruturar as informações de forma lógica.
+2. **Rotulagem**: Usar termos adequados para descrever o conteúdo.
+3. **Pesquisa e Navegação**: Facilitar a localização da informação.
+4. **Usabilidade**: Garantir que as informações sejam fáceis de encontrar e compreender.
 
-### 4. Importância da Arquitetura da Informação
-- Ajuda a entender e navegar em um mundo repleto de informações.
-- Facilita a tomada de decisões e a busca por conhecimento.
+## Conclusão
+Arquitetura da Informação é uma combinação de **arte e ciência** que organiza e estrutura dados para apoiar a usabilidade, encontrabilidade e compreensão das informações pelos usuários. Ela deve equilibrar as necessidades dos usuários com os objetivos de negócio.
 
 # Aula 2
 
-## Necessidades de Informação e Comportamento do Usuário  
-A recuperação de informações começa com as necessidades do usuário. Elas podem variar desde a busca de itens conhecidos até buscas exploratórias, onde os usuários podem não ter certeza do que estão procurando. O contexto determina como os usuários interagem com os sistemas de informação.
+# Busca por Informação e Comportamento de Busca
 
-### Tipos Comuns de Necessidades de Informação:  
-1. **Busca por item conhecido**: Os usuários sabem exatamente o que querem.  
-2. **Busca exploratória**: Os usuários estão incertos e precisam aprender mais.  
-3. **Busca exaustiva**: Uma busca abrangente por informações amplas.  
-4. **Reencontro**: A necessidade de encontrar informações acessadas anteriormente.
+## Definição
+A busca por informação está relacionada às necessidades das pessoas e aos comportamentos específicos que elas exibem durante esse processo. O estudo desses comportamentos é fundamental para a **Arquitetura da Informação (AI)**, pois ajuda a entender como organizar e apresentar informações.
 
-Essas necessidades influenciam os comportamentos que os usuários exibem durante as buscas, como pesquisar, navegar ou fazer perguntas.
+## Modelos de Comportamento de Busca
+Existem diferentes modelos que descrevem como as pessoas procuram informação. Alguns dos principais incluem:
 
-## Modelos de Recuperação de Informações  
-Vários modelos descrevem como os usuários encontram informações:
+### 1. Modelo "Muito Simples"
+- Descreve uma interação direta: o usuário faz uma pergunta e recebe uma resposta.
+- É útil apenas quando o usuário sabe exatamente o que está procurando.
+- Crítica: não considera o contexto da informação e a complexidade da busca.
 
-### 1. Modelo de Dois Passos  
-Este modelo é predominante em sites com muitos diretórios, onde os usuários sabem onde procurar inicialmente e depois realizam uma busca adicional para encontrar informações específicas.
+### 2. Modelo **Berry-picking**
+- O usuário começa com uma necessidade de informação e ajusta suas consultas iterativamente.
+- O processo envolve a coleta de fragmentos de informação (berries) ao longo da navegação.
+- A busca é contínua e mutável.
 
-### 2. Modelo de "Colheita de Frutas"  
-Neste método, os usuários começam com uma necessidade de informação específica e acessam iterativamente diferentes sistemas de informação para coletar pedaços relevantes de informação.
+### 3. Modelo **Pearl-growing**
+- A pessoa inicia com um bom conteúdo e, ao longo da jornada, coleta informações semelhantes para expandir seu conhecimento (perolização).
 
-### 3. Modelo de "Cultivo de Pérolas"  
-Semelhante ao "Colheita de Frutas", este modelo envolve a busca por itens conhecidos ou o início com uma peça de informação e a expansão da busca para itens relacionados.
+### 4. Modelo **Two-step**
+- Comum em sites organizados em diretórios.
+- O usuário primeiro identifica o diretório certo e depois refina sua busca para encontrar a informação desejada.
 
-### 4. Modelo Simples  
-Frequentemente utilizado para representar experiências básicas do usuário, mas pode ser inadequado, pois simplifica demais.
+## Tipos de Necessidades de Informação
+1. **Busca de Itens Conhecidos**: O usuário sabe exatamente o que está procurando (ex.: endereço, nome).
+2. **Busca Exploratória**: O usuário está aprendendo sobre um novo tópico e não espera uma resposta exata.
+3. **Pesquisa Exaustiva**: O usuário quer saber tudo sobre um assunto específico, requerendo paciência e motivação.
+4. **Reencontrar**: O usuário já encontrou a informação antes e agora precisa acessá-la novamente.
+
+## Comportamentos de Busca
+As pessoas utilizam diferentes estratégias para buscar informações:
+- **Pesquisar**: Realizam consultas diretas.
+- **Navegar**: Explorando opções em interfaces.
+- **Perguntar**: Solicitando ajuda ou orientação.
+
+## Conclusão
+A busca por informação é um processo dinâmico que depende das necessidades dos usuários e dos comportamentos que exibem. A compreensão desses fatores é essencial para a criação de uma Arquitetura da Informação eficaz, que equilibre as necessidades dos usuários com os objetivos do negócio.
+
 
 # Aula 3
 

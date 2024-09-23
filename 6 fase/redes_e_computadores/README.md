@@ -715,3 +715,205 @@ do núcleo e se perca na capa.
     - Tamanho influencia *.
 
 - Equipamento para medir fibra: Otdr *;
+
+
+---
+---
+---
+
+# Prova 2
+
+roteador é o conhecedor da rota
+
+dominio de colisao(switch e bridge) e broadcast(roteador)
+
+Parametros que afetam latencia
+
+Para a prova exercicio de colisao e broadcast
+
+# Cabeamento Estruturado
+
+## Definição
+- **Cabeamento Estruturado**: Sistema que envolve cabos e hardware de conexão, conforme normas, projetado para atender às necessidades de telecomunicações e TI dos usuários em edifícios comerciais.
+
+![taxa_de_transmissao](imagens/taxas_de_transmissao.png)
+  
+## Tipos de Meios de Transmissão
+- **Cabo UTP**: 
+  - Par trançado para reduzir interferências.
+
+![design_cabo](imagens/design_cabo.png)
+
+  - Classificações de flamabilidade:
+    - **CMX**: Instalações residenciais.
+    - **CM**: Instalações horizontais com alta ocupação.
+    - **CMR (Riser)**: Instalações verticais.
+    - **CMP (Plenum)**: Locais fechados.
+
+## Normas EIA/TIA
+- **EIA/TIA 568**: Define o cabeamento estruturado com quatro partes:
+  - **C.0**: Cabeamento genérico.
+  - **C.1**: Cabeamento para telecomunicações em edifícios comerciais.
+  - **C.2**: Componentes padrão (conectores, cabos, etc.).
+  - **C.3**: Componentes de fibra ótica.
+
+  ![norma_eia](imagens/norma_eia.png)
+
+## Cabeamento Horizontal e Vertical
+- **Cabeamento Horizontal**:
+  - Define os padrões de instalação de cabos e dutos dentro de edifícios.
+  - **Tomadas de rede**: Devem ter largura mínima de 50mm e altura de 75mm.
+
+- **Cabeamento Vertical**:
+  - Utiliza a topologia estrela.
+  - Todos os dutos devem ser protegidos contra fogo.
+
+## Cuidados na Instalação
+- Evitar torcer ou prensar cabos.
+- Não expor os cabos a altas temperaturas (máximo 60°C).
+- Evitar emendas em cabos UTP.
+
+![distancia_maxima](imagens/distacia_maxima.png)
+
+## Testes e Certificação
+- **Wiremap**: Verifica a continuidade de cada fio.
+- **Attenuation**: Medida da perda de inserção ao longo do cabo.
+- **NEXT**: Verifica interferências entre pares na mesma extremidade.
+- **Return Loss**: Mede a perda de sinal devido a diferenças de impedância.
+- **Propagation Delay**: Mede o tempo que o sinal leva para percorrer o cabo.
+
+  ![nomenclaturas_patch](imagens/nomenclaturas_patch.png)
+
+# Comutação
+
+## Definição
+- Processo de interligar pontos para realizar uma troca de dados.
+- Aloca recursos da rede para transmissão entre dispositivos conectados.
+- A comutação é o serviço que permite a transferência de informações entre nós ou pontos.
+
+![comutacao_definicao](imagens/comutacao_definicao.png)
+
+## Tipos de Comutação
+### Comutação de Circuitos (Circuit Switching)
+- Conexão física real entre dois dispositivos, similar ao sistema telefônico.
+- Comunicação full-duplex e orientada à conexão.
+- Vantagens: garantia de recursos e controle nas extremidades.
+- Desvantagens: desperdício de banda e atraso no estabelecimento da rota.
+
+![fdm](imagens/fdm.png)
+
+![tdm](imagens/tdm.png)
+
+### Comutação de Mensagens (Message Switching)
+- Não há caminho físico dedicado, e a mensagem é transmitida de nó em nó.
+- Usa o método "store-and-forward" (armazenar e encaminhar).
+- Vantagens: melhor aproveitamento das linhas.
+- Desvantagens: aumento do tempo de transferência e não indicado para aplicações de tempo real.
+
+![comutacao_mensagem](imagens/comutacao_mensagem.png)
+
+### Comutação de Pacotes (Packet Switching)
+- A mensagem é dividida em pacotes que podem seguir diferentes caminhos.
+- Utiliza o método "store-and-forward", com pacotes encaminhados conforme sua ordem de chegada.
+- Vantagens: uso otimizado dos recursos e mais tolerância a falhas.
+- Desvantagens: sem garantias de banda e atraso variado (jitter).
+
+![comutacao_pacote](imagens/comutacao_pacote.png)
+
+### Comutação por Células (Cell Switching)
+- Evolução da comutação de pacotes, com uso de quadros de tamanho fixo (células).
+- Exemplo: ATM (Modo de Transferência Assíncrona) para dados, voz e vídeo.
+
+## Comutação Ethernet
+- Eficiência depende do número de dispositivos e gerenciamento de colisões e broadcasts.
+- Classificação de redes: Simplex, Half-Duplex, e Full-Duplex.
+- Segmentação de redes para reduzir colisões com switches e bridges.
+
+## Domínios de Colisão e Broadcast
+- **Domínio de Colisão**: áreas onde dispositivos competem pelo meio de transmissão. As estações ligadas ao hub concorrem entre si dentro do primeiro domínio; A estação ligada à bridge compõe um segundo domínio; O switch criou mais dois domínios de colisão.
+
+![dominio_colisao](imagens/dominio_colisao.png)
+
+- **Domínio de Broadcast**: área onde pacotes broadcast são disseminados.
+
+![dominio_broadcast](imagens/dominio_broadcast.png)
+
+## Comutação de Camada 2
+- Switches e bridges ajudam a segmentar domínios de colisão, enquanto switches criam novos domínios.
+
+![bridge_camada](imagens/bridge_camada.png)
+
+## Modos de Comutação de Switch
+- **Cut-Through**: baixa latência com comutação instantânea.
+- **Store-and-Forward**: quadro completo validado antes do envio.
+- **Fragment-Free**: valida os primeiros 64 bytes para verificar a integridade.
+
+## Spanning-Tree Protocol (STP)
+- Protocolo para eliminar loops em redes com caminhos redundantes, criando uma árvore lógica hierárquica.
+
+![fluxo_dados](imagens/fluxo_dados.png)
+
+# Modelo TCP/IP - Introdução
+
+## Visão Geral
+- O Modelo TCP/IP conecta o mundo através de cabos, fios, microondas, fibras óticas e satélites.
+- Foi desenvolvido para garantir a transmissão confiável de dados para qualquer destino, sob qualquer condição.
+
+![tcp_ip](imagens/tcp_ip.png)
+
+## Camada de Aplicação
+- Protocolos de alto nível que tratam de representação, codificação e controle de diálogos.
+- Exemplos: DNS, HTTP, HTTPS, DHCP, NAT, LDAP.
+- Especificações baseadas em RFCs (Request for Comments), documentos que definem padrões universais.
+
+![funcionamento_tcp_ip](imagens/funcionamento_tcp_ip.png)
+
+## Camada de Transporte
+- Responsável pela comunicação via portas, com padrões estabelecidos pela IANA.
+- Tipos de portas:
+  - 0 a 1023: privilegiadas (servidores).
+  - 1024 a 49151: registradas (clientes).
+  - 49152 a 65535: dinâmicas (uso livre).
+  
+### UDP (User Datagram Protocol)
+- Protocolo sem conexão, não confiável (sem confirmação de entrega).
+- Usado em serviços como DHCP e DNS.
+
+### TCP (Transmission Control Protocol)
+- Protocolo orientado à conexão, que verifica a entrega com confirmação (ACK).
+- Fases de comunicação: abertura, transferência e fechamento de conexão.
+
+- ACK: reconhecimento.
+- SYN:
+conexão.
+aberturade
+- FIN: fechamento
+conexão.
+
+![conexao](imagens/conexao.png)
+
+## Camada de Internet
+- Responsável por encontrar o melhor caminho para os pacotes na rede.
+- Protocolo IP realiza o roteamento, sem se preocupar com o conteúdo dos pacotes.
+  
+### Protocolos:
+- **IP**: Define o endereçamento e entrega de pacotes.
+- **ICMP**: Protocolo de controle, usado em diagnósticos como o ping.
+- **ARP**: Protocolo que resolve endereços IP em endereços físicos (MAC).
+- **RARP**: Faz o oposto do ARP, obtendo o endereço IP a partir do endereço MAC.
+
+## Camada de Acesso à Rede
+- Cuida da transmissão física dos pacotes na rede.
+- Inclui o mapeamento de endereços IP para endereços físicos e o encapsulamento de pacotes em quadros.
+
+## Comparação com o Modelo OSI
+- As camadas de transporte são similares nos modelos TCP/IP e OSI.
+- No TCP/IP, as camadas de sessão, apresentação e aplicação do OSI são combinadas na camada de aplicação.
+- O modelo TCP/IP é amplamente utilizado na prática, enquanto o OSI é mais teórico.
+
+![comparacao](imagens/comparacao.png)
+
+## Endereçamento IP
+- **IPv4**: 32 bits, suportando até 4.294.967.296 endereços.
+- **IPv6**: 128 bits, suportando até 340 undecilhões de endereços.
+

@@ -183,4 +183,36 @@ SOLID é um acrônimo que representa cinco princípios de design de software que
 - **O - Open-Closed Principle (Princípio Aberto-Fechado)**: Este princípio estabelece que uma classe ou módulo deve ser aberto para extensão, mas fechado para modificação. Isso significa que você deve ser capaz de adicionar novas funcionalidades a uma classe sem precisar modificar seu código existente. Isso ajuda a manter a estabilidade do sistema e a evitar que mudanças em uma classe afetem outras partes do sistema.
 - **L - Liskov Substitution Principle (Princípio de Substituição de Liskov)**: Este princípio estabelece que objetos de uma classe derivada devem ser substituíveis por objetos de sua classe base. Isso significa que uma classe derivada deve ser capaz de ser usada como se fosse uma instância da classe base, sem que o código que a utiliza precise saber a diferença. Isso ajuda a garantir que as classes derivadas sejam compatíveis com as classes base.
 - **I - Interface Segregation Principle (Princípio de Segregação de Interface)**: Este princípio estabelece que uma classe não deve ser forçada a implementar interfaces que não são relevantes para ela. Em vez disso, as interfaces devem ser divididas em interfaces menores e mais específicas, que podem ser implementadas por classes que as necessitem. Isso ajuda a evitar que as classes sejam forçadas a implementar métodos que não são necessários.
-- **D - Dependency Inversion Principle (Princípio de Inversão de Dependência)**: Este princípio estabelece que as classes de alto nível não devem depender de classes de baixo nível, mas sim que ambas devem depender de abstrações. Isso significa que as classes devem ser projetadas para depender de interfaces ou abstrações, em vez de depender de implementações específicas. Isso ajuda a reduzir a dependência entre as classes e a tornar o sistema mais flexível e escalável.F
+- **D - Dependency Inversion Principle (Princípio de Inversão de Dependência)**: Este princípio estabelece que as classes de alto nível não devem depender de classes de baixo nível, mas sim que ambas devem depender de abstrações. Isso significa que as classes devem ser projetadas para depender de interfaces ou abstrações, em vez de depender de implementações específicas. Isso ajuda a reduzir a dependência entre as classes e a tornar o sistema mais flexível e escalável.
+
+---
+---
+---
+
+# Prova 2
+
+# Aula - Padrão de Projeto Bridge
+
+## Definição
+O padrão **Bridge** desacopla uma abstração de sua implementação, permitindo dividir uma classe grande ou um conjunto de classes interligadas em duas hierarquias separadas. Assim, essas hierarquias podem variar de forma independente.
+
+## Aplicabilidade
+- Quando se deseja evitar uma ligação permanente entre uma abstração e sua implementação.
+- Quando abstrações e implementações precisam ser extensíveis por meio de subclassificação.
+- Quando há proliferação de classes.
+
+## Consequências
+- **Desacoplamento** da interface e da implementação.
+- Maior **extensibilidade**.
+- Oculta os detalhes da implementação dos clientes.
+
+## Exemplo de Aplicação
+Implemente um sistema de desenho que utilize o padrão Bridge com as seguintes características:
+- Diferentes formas geométricas como **Círculo** e **Quadrado**.
+- Diferentes tipos de renderização como **Renderizador 2D** e **Renderizador 3D**.
+
+### Instruções:
+1. Crie uma interface `Renderizador` com métodos como `renderizarForma()`.
+2. Implemente as classes concretas `Renderizador2D` e `Renderizador3D`.
+3. Crie uma classe abstrata `Forma` que tenha um `Renderizador`.
+4. Crie classes concretas `Círculo` e `Quadrado` que herdam de `Forma` e utilizam o `Renderizador`.

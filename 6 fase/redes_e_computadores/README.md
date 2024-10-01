@@ -917,3 +917,139 @@ conexão.
 - **IPv4**: 32 bits, suportando até 4.294.967.296 endereços.
 - **IPv6**: 128 bits, suportando até 340 undecilhões de endereços.
 
+# Modelo TCP/IP - Introdução
+
+## Visão Geral
+- O modelo TCP/IP foi desenvolvido para permitir a transmissão confiável de dados entre diferentes redes e nós sob qualquer circunstância.
+- O **Department of Defense (DoD)** dos EUA exigia uma comunicação resiliente entre redes.
+
+## Camadas do Modelo TCP/IP
+
+### 1. **Camada de Aplicação**
+- Lida com protocolos de alto nível (ex.: DNS, HTTP, HTTPS, DHCP).
+- Responsável pela representação, codificação e controle de diálogos.
+- As especificações dos protocolos são documentadas em **RFCs** (Request for Comments).
+
+### 2. **Camada de Transporte**
+- Utiliza portas para comunicação entre aplicações (ex.: `192.168.1.1:8080`).
+- Protocolo **UDP**: não orientado à conexão, rápido, mas sem confirmação de entrega.
+- Protocolo **TCP**: orientado à conexão, confirma entrega via **ACK** e realiza controle de fluxo.
+
+#### **TCP - Transmission Control Protocol**
+- Divide a comunicação em três fases: abertura, transferência e fechamento da conexão.
+- Utiliza o **Three-way Handshake** para iniciar conexões (**SYN**, **ACK**, **FIN**).
+- Realiza a retransmissão de pacotes em caso de perda, medindo o tempo de resposta com **RTT** (Round Trip Time).
+
+### 3. **Camada de Internet**
+- Encaminha pacotes através de diferentes redes.
+- **IP (Internet Protocol)**: define o endereçamento e roteamento de pacotes.
+- **ICMP (Internet Control Message Protocol)**: usado para controle e mensagens, como no comando **Ping**.
+- **ARP (Address Resolution Protocol)** e **RARP (Reverse ARP)**: resolvem endereços físicos (MAC) e IPs.
+
+### 4. **Camada de Acesso à Rede**
+- Responsável pelo estabelecimento do link físico entre dispositivos.
+- Realiza o mapeamento entre endereços IP e físicos e encapsula pacotes em quadros.
+
+## Comparação com o Modelo OSI
+- O modelo TCP/IP é mais prático, enquanto o modelo OSI é acadêmico.
+- As camadas de sessão, apresentação e aplicação do modelo OSI correspondem à camada de aplicação no TCP/IP.
+- Termos como "pacote" e "datagrama" são usados de forma intercambiável no contexto das camadas de rede.
+
+## Histórico de IP
+- Endereço **IPv4**: 32 bits (4.294.967.296 endereços).
+- Endereço **IPv6**: 128 bits (cerca de 340 undecilhões de endereços).
+
+
+# Modelo TCP/IP - Endereçamento
+
+## Visão Geral
+- Um **endereço IP** é uma sequência de 32 bits (binário: 1s e 0s).
+- É comumente representado no formato **decimal pontuado**, ex: `192.168.1.1`.
+- Um endereço IP consiste em **4 octetos**, onde cada octeto contém 8 dígitos binários.
+
+![classe_bits](imagens/classe_bits.png)
+
+## Classes de Endereçamento
+### Classe A
+- O **primeiro octeto** indica a rede, enquanto os três últimos octetos representam a parte do host.
+- Faixa de endereços: **1 a 126** (primeiro octeto).
+- Valores reservados:
+  - **0** é reservado para endereçamento padrão.
+  - **127** é reservado para teste de loopback.
+
+### Classe B
+- Os **dois primeiros octetos** definem a rede, e os últimos dois octetos definem o host.
+- Faixa de endereços: **128 a 191** (primeiro octeto).
+
+### Classe C
+- Os **três primeiros octetos** definem a rede, e o último octeto é para o host.
+- Faixa de endereços: **192 a 223** (primeiro octeto).
+
+### Classe D
+- Usado para **multicast**.
+- Faixa de endereços: **224 a 239** (primeiro octeto).
+
+### Classe E
+- Reservado para **uso futuro**.
+- Faixa de endereços: **240 a 255** (primeiro octeto).
+
+![classe_enderecamento](imagens/classe_enderecamento.png)
+
+## Tipos Especiais de Endereços
+- **Endereço de Rede**: Identifica o segmento específico da rede.
+- **Endereço de Broadcast**: Permite o envio de dados para todos os dispositivos dentro da rede.
+
+## Tradução de Endereços de Rede (NAT)
+- O NAT é utilizado para mapear endereços IP privados em públicos, facilitando o acesso à internet para dispositivos em uma rede privada.
+
+## Sub-redes
+- Sub-redes dividem uma rede em partes menores e mais gerenciáveis, exigindo pelo menos **dois** hosts utilizáveis por sub-rede.
+
+## Comparação IPv4 e IPv6
+- **IPv4**:
+  - Comprimento: **32 bits**.
+  - Formato: Decimal com valores separados por pontos.
+- **IPv6**:
+  - Comprimento: **128 bits**.
+  - Formato: Hexadecimal com valores separados por dois pontos.
+  - Os **zeros à esquerda** em IPv6 podem ser omitidos para simplificação.
+
+## ARP - Protocolo de Resolução de Endereços
+- O ARP é utilizado para mapear endereços IP em **endereços MAC** para comunicação dentro da mesma rede.
+
+## Gateway Padrão
+- O **gateway padrão** é o endereço IP da interface do roteador que um host usa para se comunicar fora de sua rede local.
+
+## Atribuição de Endereços
+- Endereços IP públicos são regulados por autoridades como a **IANA** (Internet Assigned Numbers Authority).
+
+# Sub-Redes
+
+## Definição
+Uma **sub-rede** é uma rede menor dentro de uma rede maior. A criação de sub-redes torna o roteamento de rede mais eficiente.
+
+![mascara_subrede](imagens/mascara_subrede.png)
+
+## Problemas de Desperdício de Endereços
+- No exemplo de um **endereço de rede classe C** (`192.168.10.0`) atribuído a uma rede com 100 estações, apenas 100 dos 254 endereços disponíveis são utilizados, resultando em **154 endereços desperdiçados**.
+- Caso a rede precise de mais de 254 estações, seria necessário usar um **endereço classe B** (`172.16.0.0`), o que resultaria em um desperdício ainda maior, pois uma classe B suporta **65.534 endereços**, com mais de 65.000 não utilizados.
+
+## Identificadores de Rede e Estação
+Em vez de considerar que um endereço IP é composto apenas pelo **identificador de rede** e pelo **identificador de estação**, pode-se dividir o identificador de estação em duas partes:
+1. **Identificador de sub-rede**: Junto com o identificador de rede, ele identifica de forma única uma rede física.
+2. **Identificador de estação**: Identifica de forma única uma estação (interface) dentro da rede.
+
+![ip_subrede](imagens/ip_subrede.png)
+
+## Empréstimo de Bits
+Sub-redes IPv4 são criadas usando bits de host como bits de rede. Isso permite a criação de mais sub-redes, mas diminui o número de hosts por sub-rede.
+
+![calculo_subrede](imagens/calculo_subrede.png)
+
+## Cálculo de Sub-redes
+- **Sub-redes**: 2 ^ número de bits emprestados.
+- **Hosts**: 2 ^ número de bits restantes – 2.
+
+## Exemplo
+- **Endereço**: `192.168.1.0/25`
+- **Máscara de sub-rede**: `255.255.255.224`

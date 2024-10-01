@@ -1,0 +1,75 @@
+1 - Os protocolos são como uma linguagem em comum para os computadores poderem se comunicarem e se entederem ao mesmo tempo, podendo usar software e hardware diferentes e se comunicar mesmo assim
+
+Protocolos de rede e seus RFC:
+
+HTTP (Hypertext Transfer Protocol) - RFC 2616: HTTP/1.1
+HTTPS (HTTP Secure) - RFC 2818: HTTPS
+DNS (Domain Name System) - RFC 1035: DNS
+SMTP (Simple Mail Transfer Protocol) - RFC 5321: SMTP
+FTP (File Transfer Protocol) - RFC 959: FTP
+DHCP (Dynamic Host Configuration Protocol) - RFC 2131: DHCP
+NTP (Network Time Protocol) - RFC 5905: NTP
+IMAP (Internet Message Access Protocol) - RFC 3501: IMAP
+POP3 (Post Office Protocol version 3) - RFC 1939: POP3
+TCP (Transmission Control Protocol) - RFC 793: TCP
+
+2 - Protocolo para eliminar loops em redes que utilizam switches com caminhos redundantes, criando uma árvore lógica hierárquica. Se um caminho falhar, o STP reativa uma rota alternativa, dando sequencia no tráfego.
+
+Versões stp:
+
+STP (Spanning Tree Protocol) – IEEE 802.1D:
+A versão original do STP, padronizada em 1990. Cria uma única árvore de spanning e tem um tempo de convergência relativamente longo (30 a 50 segundos).
+
+RSTP (Rapid Spanning Tree Protocol) – IEEE 802.1w:
+Introduzida como uma versão aprimorada do STP, oferece tempos de convergência significativamente menores (de 1 a 10 segundos). O RSTP pode substituir o STP e é amplamente compatível com o protocolo mais antigo.
+
+MSTP (Multiple Spanning Tree Protocol) – IEEE 802.1s:
+Permite múltiplas instâncias de árvores de spanning em uma única rede, cada uma mapeada para diferentes VLANs. Isso possibilita o uso mais eficiente dos links redundantes, uma vez que diferentes VLANs podem usar diferentes caminhos.
+
+PVST+ (Per VLAN Spanning Tree Plus) – Proprietário da Cisco:
+Uma versão aprimorada do STP, que mantém uma árvore de spanning para cada VLAN em uma rede. Essa abordagem permite otimizações específicas para cada VLAN.
+
+RPVST+ (Rapid Per VLAN Spanning Tree Plus) – Proprietário da Cisco:
+Combina os benefícios do RSTP com o conceito do PVST+, ou seja, uma árvore de spanning rápida e independente para cada VLAN.
+
+Comandos: 
+
+Ativar o STP no switch:
+O STP geralmente está habilitado por padrão, mas se você quiser garantir que ele está ativo:
+switch(config)# spanning-tree
+
+Configurar o STP para uma VLAN específica (usando PVST+ ou RPVST+):
+Para configurar o STP para uma VLAN específica:
+
+switch(config)# spanning-tree vlan <VLAN_ID>
+
+Configurar um switch como root bridge (switch raiz):
+Para garantir que um switch seja a raiz da árvore de spanning, você pode definir sua prioridade (o valor padrão é 32768, e o switch com a menor prioridade se torna a raiz):
+
+switch(config)# spanning-tree vlan <VLAN_ID> priority <valor>
+
+Configurar a Bridge Priority para uma instância do STP:
+Para definir a prioridade de uma bridge:
+
+switch(config)# spanning-tree vlan <VLAN_ID> priority <valor>
+
+Ativar o RSTP (Rapid STP):
+Caso você queira usar a versão mais rápida do STP (RSTP):
+
+switch(config)# spanning-tree mode rapid-pvst
+
+Verificar o status do STP:
+Para verificar as informações do STP:
+switch# show spanning-tree
+
+Configurar o switch para o modo "PortFast" (utilizado em portas conectadas a dispositivos finais, como PCs, que não precisam participar do STP):
+O PortFast permite que uma porta vá diretamente para o estado de encaminhamento, evitando atrasos causados pelo STP:
+
+switch(config)# interface <interface_id>
+switch(config-if)# spanning-tree portfast
+
+Configurar o BPDU Guard (para proteger as portas com PortFast de receber mensagens BPDU):
+Se uma BPDU for recebida em uma porta com PortFast, a porta será colocada em estado "err-disable":
+
+switch(config-if)# spanning-tree bpduguard enable
+

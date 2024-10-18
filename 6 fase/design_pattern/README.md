@@ -216,3 +216,99 @@ Implemente um sistema de desenho que utilize o padrão Bridge com as seguintes c
 2. Implemente as classes concretas `Renderizador2D` e `Renderizador3D`.
 3. Crie uma classe abstrata `Forma` que tenha um `Renderizador`.
 4. Crie classes concretas `Círculo` e `Quadrado` que herdam de `Forma` e utilizam o `Renderizador`.
+
+# Aula Composite
+
+## Design Patterns (Padrões de Projeto)
+
+### Composite
+
+#### Definição
+O padrão Composite permite a composição de objetos em estruturas de árvore para representar hierarquias parte-todo. Os clientes podem tratar objetos individuais ou composições de objetos de maneira transparente e uniforme.
+
+#### Estruturas
+- **Pasta**
+  - Nome
+  - Caminho
+  - Pode ser exibida
+  - Pode ter filhos adicionados
+  - Pode ter filhos removidos
+  - Pode ter filhos recuperados
+
+- **Arquivo**
+  - Nome
+  - Caminho
+  - Pode ser exibido
+
+  ![Composite](composite.png)
+
+### Aplicabilidade
+- Representar uma hierarquia de objetos.
+- Permitir que clientes ignorem a diferença entre composições de objetos e objetos individuais.
+
+### Consequências
+- Definição de hierarquias de classes com objetos primitivos (folhas) e objetos compostos (nós).
+- Tratamento uniforme de estruturas compostas e objetos individuais pelos clientes.
+- Facilidade na adição de novos tipos de componentes.
+- Possível excessiva generalização na arquitetura do código.
+
+
+# Chain of Responsibility - Design Patterns
+
+## Definição
+
+O padrão **Chain of Responsibility** evita o acoplamento do remetente de uma solicitação ao seu receptor, 
+dando a mais de um objeto a oportunidade de tratar a solicitação. Ele encadeia os objetos receptores, 
+passando a solicitação ao longo da cadeia até que um objeto a trate.
+
+## Estrutura
+
+O padrão pode ser entendido da seguinte maneira:
+- **if-else if-else**: verificações em sequência
+- **switch-case**: casos que são tratados conforme a condição
+- Encadeamento de objetos responsáveis por tratar as solicitações.
+
+![chain](chain.png)
+
+## Aplicabilidade
+
+Este padrão é aplicável em situações como:
+- Quando mais de um objeto pode tratar uma solicitação e não se sabe qual deles irá realizar o tratamento.
+- Quando é necessário enviar uma solicitação para um dos vários objetos sem especificar explicitamente qual.
+- Quando o conjunto de objetos que pode tratar uma solicitação precisa ser especificado dinamicamente.
+
+## Consequências
+
+Entre as principais consequências do uso do padrão, temos:
+- Redução de acoplamento entre o remetente e o receptor da solicitação.
+- Maior flexibilidade na atribuição de responsabilidades aos objetos.
+- A resposta à solicitação não é garantida, podendo passar por todos os objetos sem ser tratada.
+
+# Observer - Design Patterns
+
+## Definição
+
+O padrão **Observer** define uma dependência um-para-muitos entre objetos, de modo que, quando um objeto muda seu estado, todos os seus dependentes são notificados e atualizados automaticamente.
+
+## Estrutura
+
+O padrão pode ser utilizado em duas políticas:
+- **Política pull**: os objetos dependentes (observadores) perguntam sobre as atualizações do objeto observado.
+- **Política push**: o objeto observado informa os observadores sobre as atualizações de forma proativa.
+
+![observer](observer.png)
+
+## Aplicabilidade
+
+Este padrão é aplicável quando:
+- Há dois aspectos de uma abstração que dependem um do outro, e é necessário que possam variar e ser reutilizados independentemente.
+- Quando uma alteração em um objeto requer a alteração de outros, e não se sabe quantos objetos precisarão ser alterados.
+- Quando um objeto precisa notificar outros objetos sem conhecê-los, mantendo o desacoplamento.
+
+## Consequências
+
+As principais consequências do padrão Observer são:
+- Permite variar e reutilizar assuntos e observadores de forma independente.
+- Cria um acoplamento abstrato entre o objeto principal (assunto) e os observadores.
+- Suporta comunicação via broadcast.
+- Pode causar atualizações inesperadas ou cíclicas.

@@ -178,3 +178,51 @@ Esses componentes estão relacionados ao conteúdo e à maneira como ele é apre
 
 ## Conclusão
 A arquitetura de informação bem estruturada facilita a navegação, tornando o acesso ao conteúdo mais eficiente e intuitivo. Compreender os componentes e os tipos de arquitetura é fundamental para criar experiências de usuário mais fluídas e eficazes.
+
+# PROVA 2
+
+# Card Sorting - Aula 7 (01.10.2024)
+
+## Introdução
+**Card Sorting** é uma técnica de pesquisa amplamente utilizada no design de UX para entender como as pessoas categorizam informações. Esse método permite criar uma arquitetura de informação que atende às expectativas dos usuários.
+
+## Tipos de Card Sorting
+1. **Card Sorting Aberto**: 
+   - Os participantes classificam os cartões em categorias que fazem sentido para eles e rotulam cada categoria.
+   - Utilizado para descobrir como os usuários entendem e conceituam as informações.
+
+2. **Card Sorting Fechado**:
+   - Os participantes classificam os cartões em categorias predefinidas.
+   - Útil para identificar rótulos confusos ou pouco claros e ajustar a organização.
+
+3. **Card Sorting Híbrido**:
+   - Os participantes podem classificar os cartões em categorias predefinidas, mas também podem criar suas próprias categorias.
+   - Ideal para combinar a geração de ideias com uma estrutura básica oferecida.
+
+## Aplicação do Card Sorting
+Para aplicar a técnica, recomenda-se seguir os seguintes passos:
+1. Definir o objetivo da pesquisa.
+2. Escolher o método (aberto, fechado ou híbrido) e o ambiente (presencial ou online).
+3. Selecionar o conteúdo (normalmente entre 30 a 60 cartões).
+4. Escolher e convidar os participantes.
+5. Realizar o card sort e registrar os dados.
+6. Analisar os resultados.
+7. Usar os insights no projeto.
+
+## Interpretação dos Resultados
+- **Testes Abertos e Híbridos**:
+   - Analisar a lógica por trás das categorias criadas.
+   - Identificar cartões frequentemente agrupados ou nunca agrupados.
+   - Avaliar os rótulos sugeridos pelos participantes.
+
+- **Testes Fechados**:
+   - Quantificar a concordância entre os participantes sobre a classificação dos cartões.
+   - Avaliar as categorias que geraram maior consenso ou ambiguidade.
+
+## Hora da Prática
+Um exercício prático foi proposto com o desafio de organizar 20 itens de uma loja de eletrônicos em 5 categorias predefinidas. O objetivo é testar se os usuários organizariam os produtos da mesma forma sugerida inicialmente, ajustando a organização conforme os resultados.
+
+## Requisitos do Projeto
+- Preparar o teste (presencial ou online).
+- Realizar o card sort com no mínimo 15 pessoas.
+- Analisar os resultados e entregar um relatório com a organização das categorias baseadas no teste.

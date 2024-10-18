@@ -1,0 +1,7 @@
+Há uma estação com o IP 192.168.42.130 e máscara de
+sub-rede 255.255.255.224.
+• Esse IP está em qual sub-rede? Na sub-rede 4
+• Qual o primeiro IP válido da sub-rede? 192.168.42.129
+• Qual o último IP válido da sub-rede? 192.168.42.158
+• Qual o broadcast da sub-rede? 192.168.42.159
+• Quanta sub-redes são? são 8 sub-redes

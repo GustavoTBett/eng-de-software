@@ -191,6 +191,32 @@ SOLID é um acrônimo que representa cinco princípios de design de software que
 
 # Prova 2
 
+# Adapter - Design Patterns
+
+## Definição
+
+O padrão **Adapter** converte a interface de uma classe para outra interface que o cliente espera encontrar. Ele permite que classes com interfaces incompatíveis trabalhem juntas.
+
+## Estrutura
+
+O padrão pode ser implementado em dois formatos:
+- **Adapter de classe**: utiliza herança para adaptar a interface.
+- **Adapter de objeto**: usa composição, onde o adaptador contém a instância da classe que precisa ser adaptada.
+
+## Aplicabilidade
+
+Este padrão é aplicável quando:
+- É necessário usar uma classe existente, mas sua interface é diferente da esperada.
+- Deseja-se criar uma classe reutilizável que coopere com classes que não possuem interfaces compatíveis.
+- É impraticável adaptar várias subclasses existentes através de herança, sendo mais eficiente utilizar um adaptador de objeto.
+
+## Consequências
+
+As principais consequências do padrão Adapter são:
+- A quantidade de trabalho que o Adapter realiza depende da semelhança entre a interface alvo e a classe adaptada.
+- O Adapter torna classes mais reutilizáveis, eliminando suposições que outras classes poderiam fazer sobre suas interfaces.
+
+
 # Aula - Padrão de Projeto Bridge
 
 ## Definição
@@ -312,3 +338,28 @@ As principais consequências do padrão Observer são:
 - Cria um acoplamento abstrato entre o objeto principal (assunto) e os observadores.
 - Suporta comunicação via broadcast.
 - Pode causar atualizações inesperadas ou cíclicas.
+
+# State - Design Patterns
+
+## Definição
+
+O padrão **State** permite que um objeto altere seu comportamento quando seu estado interno muda, fazendo com que pareça que a classe do objeto mudou.
+
+## Estrutura
+
+O padrão envolve dois componentes principais:
+- **Context**: mantém uma referência para o estado atual do objeto e delega as operações ao estado.
+- **State**: define a interface para o comportamento associado a um estado específico do Context.
+
+## Aplicabilidade
+
+Este padrão é aplicável quando:
+- O comportamento de um objeto depende de seu estado e ele precisa alterar seu comportamento durante a execução.
+- As operações possuem muitas condições dependentes de estado que podem ser expressas usando subclasses de estados.
+
+## Consequências
+
+As principais consequências do padrão State são:
+- Organiza melhor o código ao dividir os comportamentos em estados distintos.
+- Torna as transições de estados explícitas.
+- Pode aumentar o número de classes no sistema, pois cada estado é uma classe separada.

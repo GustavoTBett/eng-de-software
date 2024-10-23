@@ -232,17 +232,6 @@ O padrão **Bridge** desacopla uma abstração de sua implementação, permitind
 - Maior **extensibilidade**.
 - Oculta os detalhes da implementação dos clientes.
 
-## Exemplo de Aplicação
-Implemente um sistema de desenho que utilize o padrão Bridge com as seguintes características:
-- Diferentes formas geométricas como **Círculo** e **Quadrado**.
-- Diferentes tipos de renderização como **Renderizador 2D** e **Renderizador 3D**.
-
-### Instruções:
-1. Crie uma interface `Renderizador` com métodos como `renderizarForma()`.
-2. Implemente as classes concretas `Renderizador2D` e `Renderizador3D`.
-3. Crie uma classe abstrata `Forma` que tenha um `Renderizador`.
-4. Crie classes concretas `Círculo` e `Quadrado` que herdam de `Forma` e utilizam o `Renderizador`.
-
 # Aula Composite
 
 ## Design Patterns (Padrões de Projeto)

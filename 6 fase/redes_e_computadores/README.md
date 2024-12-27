@@ -1053,3 +1053,9 @@ Sub-redes IPv4 são criadas usando bits de host como bits de rede. Isso permite 
 ## Exemplo
 - **Endereço**: `192.168.1.0/25`
 - **Máscara de sub-rede**: `255.255.255.224`
+
+# Sumarização de Redes
+
+## 1. Definição
+Sumarização de redes é uma técnica utilizada para representar grandes redes em um formato mais compacto, preservando suas principais características estruturais. O objetivo é reduzir a complexidade de análise e visualização, mantendo informações relevantes da rede original.
+

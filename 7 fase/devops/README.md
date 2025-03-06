@@ -156,3 +156,86 @@ O DevOps é uma abordagem que integra desenvolvimento e operações para garanti
 7. **Monitoramento (Monitor)**: Monitoramento contínuo para melhoria constante.
 
 Cada fase tem sua importância e influencia diretamente na qualidade e confiabilidade do software. O uso de ferramentas e boas práticas é essencial para garantir um fluxo de trabalho eficiente no DevOps.
+
+## Gitflow: Um Guia Completo  
+
+### O que é Gitflow?  
+Gitflow é um modelo de branching para Git criado por Vincent Driessen. Ele organiza o fluxo de trabalho no desenvolvimento de software, definindo regras claras para criação e mesclagem de branches.  
+
+### Por que utilizar o Gitflow?  
+- Estrutura o desenvolvimento de forma organizada.  
+- Facilita o trabalho em equipe.  
+- Reduz conflitos na integração de código.  
+- Separa código de produção e desenvolvimento.  
+- Automatiza releases e hotfixes.  
+
+### Quando utilizar o Gitflow?  
+- Projetos médios e grandes com múltiplos desenvolvedores.  
+- Equipes com ciclos de release estruturados.  
+- Desenvolvimento contínuo e manutenção paralela.  
+- Ambientes que precisam de um histórico claro de versões.  
+
+### Estrutura do Gitflow  
+O Gitflow utiliza seis tipos principais de branches:  
+1. **main** – Código estável e pronto para produção.  
+2. **develop** – Código em desenvolvimento contínuo.  
+3. **feature** – Para novas funcionalidades, baseada em develop.  
+4. **release** – Preparação de versões antes de irem para main.  
+5. **hotfix** – Correções urgentes diretamente na main.  
+6. **support (opcional)** – Suporte a versões anteriores.  
+
+### Passo a Passo para Implementar o Gitflow  
+
+#### 1. Instalando o Gitflow  
+- **Linux/macOS:**  
+  ```sh
+  $ brew install git-flow-avh
+  ```  
+- **Windows:**  
+  ```sh
+  $ choco install gitflow-avh
+  ```  
+
+#### 2. Inicializando um repositório  
+- Criar ou clonar um repositório:  
+  ```sh
+  $ git init meu-projeto  
+  $ cd meu-projeto  
+  $ git flow init  
+  ```  
+- Definir branches principais:  
+  - `main` (produção)  
+  - `develop` (desenvolvimento)  
+
+#### 3. Criando e Trabalhando com Branches  
+- **Feature Branch:**  
+  ```sh
+  $ git flow feature start minha-feature  
+  $ git add .  
+  $ git commit -m "Nova feature"  
+  $ git flow feature finish minha-feature  
+  ```  
+- **Release Branch:**  
+  ```sh
+  $ git flow release start 1.0.0  
+  $ git flow release finish 1.0.0  
+  ```  
+  _(Cria automaticamente uma tag de versão)_  
+- **Hotfix Branch:**  
+  ```sh
+  $ git flow hotfix start correção-importante  
+  $ git flow hotfix finish correção-importante  
+  ```  
+  _(Mescla na main e develop)_  
+
+#### 4. Mantendo o Fluxo de Trabalho  
+- Antes de novas features, atualizar a branch develop:  
+  ```sh
+  $ git checkout develop  
+  $ git pull origin develop  
+  ```  
+- Sincronizar código regularmente:  
+  ```sh
+  $ git fetch origin  
+  ```  
+- Utilizar Gitflow para gerenciar features, releases e hotfixes.

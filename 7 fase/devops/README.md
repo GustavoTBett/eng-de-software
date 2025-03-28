@@ -239,3 +239,229 @@ O Gitflow utiliza seis tipos principais de branches:
   $ git fetch origin  
   ```  
 - Utilizar Gitflow para gerenciar features, releases e hotfixes.
+
+# Resumo: DevOps e Gitflow  
+
+## 1. Monitoramento e Métricas  
+- **Métricas chave (KPIs):** Lead Time, taxa de falha de implantação, MTTR.  
+- **Ferramentas:** Prometheus, Grafana, Datadog.  
+- **Logging estruturado:** ELK Stack ou Loki.  
+- **Dashboards:** Criar visualizações para acompanhar indicadores.  
+
+### 📌 **Exemplo**  
+Uma fintech reduziu o MTTR de **4 horas para 45 minutos** ao implementar **Prometheus + Grafana** e centralizar logs com **ELK Stack**.  
+
+## 2. Compartilhamento  
+- **Documentação:** Wikis, Confluence, Notion.  
+- **Post-mortems sem culpa:** Foco no aprendizado.  
+- **Comunidade interna:** Canais para troca de experiências.  
+- **Treinamentos:** Workshops e mentorias sobre DevOps.  
+
+### 📌 **Exemplo**  
+Uma empresa SaaS reduziu erros operacionais em **70%** ao criar um banco de conhecimento no **Confluence** e organizar **"DevOps Talks"** mensais.  
+
+---
+
+# 🚀 Fluxo de Trabalho DevOps  
+> **Fases:** Desenvolvimento → Build → Test → Release → Deploy → Operate → Monitor  
+
+## 1️⃣ Desenvolvimento (Dev)  
+- **Ferramentas:** Git (GitHub, GitLab), IDEs (VS Code, IntelliJ), Scrum/Kanban.  
+- **Exemplo:** Branch separado → Pull Request → Merge.  
+
+## 2️⃣ Construção (Build)  
+- **Ferramentas:** Maven, Gradle, Docker.  
+- **Exemplo:** Pipeline CI/CD compila código e cria imagem Docker.  
+
+## 3️⃣ Testes (Test)  
+- **Tipos:** Unitários, Integração, Funcionais, Performance, Segurança.  
+- **Ferramentas:** JUnit, Selenium, JMeter.  
+- **Exemplo:** Pipeline executa testes antes de avançar para release.  
+
+## 4️⃣ Lançamento (Release)  
+- **Ferramentas:** GitHub Releases, Helm, Terraform.  
+- **Exemplo:** Gerar versão documentada e armazenar no repositório.  
+
+## 5️⃣ Implantação (Deploy)  
+- **Estratégias:** Blue-Green, Canary Release, Rolling Updates.  
+- **Ferramentas:** Kubernetes, Ansible, ArgoCD.  
+- **Exemplo:** Deploy com rollback automático no Kubernetes.  
+
+## 6️⃣ Operação (Operate)  
+- **Boas práticas:** Log centralizado, escalabilidade, backup.  
+- **Ferramentas:** ELK Stack, Kubernetes Auto-Scaling.  
+- **Exemplo:** Escalabilidade automática no Kubernetes conforme tráfego.  
+
+## 7️⃣ Monitoramento (Monitor)  
+- **Métricas:** Latência, uso de CPU/RAM, taxa de erro.  
+- **Ferramentas:** Prometheus, Datadog, Sentry.  
+- **Exemplo:** Alerta no Slack ao detectar alta latência.  
+
+## 8️⃣ Segurança (Security)  
+- **Práticas:** Varredura de código, gestão de credenciais, auditoria de logs.  
+- **Ferramentas:** SonarQube, OWASP ZAP, Vault.  
+- **Exemplo:** CI/CD bloqueia código inseguro com análise SonarQube.  
+
+---
+
+# 🛠 Gitflow: Um Guia Rápido  
+**O que é?**  
+- Modelo de branching para organização do desenvolvimento.  
+
+**Principais branches:**  
+- **`main`** → Código estável e pronto para produção.  
+- **`develop`** → Desenvolvimento contínuo.  
+- **`feature/*`** → Novas funcionalidades.  
+- **`release/*`** → Preparação para lançamento.  
+- **`hotfix/*`** → Correção de bugs críticos em produção.  
+
+**Fluxo:**  
+1. Criar branch `feature/nova-funcionalidade` a partir de `develop`.  
+2. Após finalizar, mergear na `develop`.  
+3. Quando pronto para release, criar `release/v1.0` e testar.  
+4. Merge em `main`, criando uma tag.  
+5. Se necessário, criar `hotfix/bug-fix` e mergear em `main` e `develop`.  
+
+# DevOps - Aula 03
+
+## Infraestrutura como Código (IaC)
+
+Infraestrutura como Código (IaC) é a prática de gerenciar e provisionar infraestrutura de TI via código, ao invés de processos manuais.
+
+### Benefícios:
+- **Consistência** - Evita erros de configuração manual
+- **Automação** - Reduz tempo de provisionamento
+- **Escalabilidade** - Facilita crescimento da infraestrutura
+- **Versionamento** - Permite rastreamento como código-fonte
+
+---
+
+## **On-Premises vs IaC**
+
+| Característica     | On-Premises        | IaC                      |
+|-------------------|------------------|--------------------------|
+| **Custo**         | Alto (hardware próprio) | Baixo (paga conforme uso) |
+| **Escalabilidade** | Limitada e demorada | Automática e rápida |
+| **Automação**     | Baixa              | Alta |
+| **Gerenciamento** | Manual             | Automatizado via código |
+| **Provisionamento** | Dias/Semanas      | Minutos |
+| **Flexibilidade** | Baixa              | Alta |
+
+---
+
+## **Ferramentas de IaC**
+
+### **Terraform** (HashiCorp)
+- **Código Declarativo** - Define o estado desejado da infraestrutura
+- **Multi-Cloud** - Suporta AWS, Azure, Google Cloud, etc.
+- **Versionamento e Controle de Estado** - Usa arquivos `.tfstate`
+- **Infraestrutura Imutável** - Altera recursos destruindo e recriando-os
+
+Exemplo em **Terraform**:
+```hcl
+provider "aws" {
+    region = "us-east-1"
+}
+
+resource "aws_instance" "example" {
+    ami           = "ami-12345678"
+    instance_type = "t2.micro"
+}
+```
+
+---
+
+### **Ansible** (Red Hat)
+- **Baseado em YAML** - Usa Playbooks
+- **Agentless** - Não requer agentes nos servidores gerenciados
+- **Fácil Integração** - Funciona com AWS, Azure, Kubernetes, Docker, etc.
+- **Ideal para Configuração** - Complementa o Terraform
+
+Exemplo em **Ansible**:
+```yaml
+- name: Instalar Nginx
+  hosts: servidores
+  become: yes
+  tasks:
+    - name: Atualizar pacotes
+      apt:
+        update_cache: yes
+    - name: Instalar Nginx
+      apt:
+        name: nginx
+        state: present
+```
+
+---
+
+### **AWS CloudFormation**
+- **Específico para AWS** - Diferente do Terraform, só funciona na AWS
+- **Baseado em JSON ou YAML** - Define infraestrutura como código
+- **Automação Completa** - Pode criar servidores, redes, bancos de dados e aplicações
+- **Gerenciamento de Stack** - Define toda a infraestrutura como um conjunto de recursos interligados
+
+Exemplo em **CloudFormation**:
+```yaml
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-12345678
+      InstanceType: t2.micro
+```
+
+---
+
+# DevOps - Aula 04
+
+## Containers e Virtualização
+
+### O que é Virtualização?
+- Permite rodar múltiplos sistemas operacionais em um único hardware físico.
+- Criada por meio de **máquinas virtuais (VMs)**.
+- Softwares utilizados: **VirtualBox, VMWare, Hypervisor, Docker**.
+
+### Tipos de Virtualização
+- **Full Virtualization**: Emula um hardware completo.
+- **Para-Virtualization**: OS convidados colaboram com o Hypervisor.
+- **Container-Based Virtualization**: Compartilha o kernel do SO.
+
+### Como funcionam as VMs?
+- Cada VM tem seu próprio **SO, bibliotecas e aplicações**.
+- Requer um **Hypervisor** para gerenciar múltiplas VMs.
+- Exemplos de **Hypervisors**: *VMware, VirtualBox, Hyper-V*.
+
+## Containers
+
+### O que são Containers?
+- Ambientes isolados para execução de aplicações.
+- Compartilham o **kernel** do SO.
+- Mais leves e eficientes que VMs.
+
+### Containers vs VMs
+
+| Característica  | Containers | VMs  |
+|----------------|-----------|------|
+| Isolamento     | Parcial   | Completo |
+| Tempo de Inicialização | Segundos  | Minutos |
+| Uso de Recursos | Baixo     | Alto |
+| SO Próprio     | Não       | Sim |
+| Flexibilidade  | Alta      | Moderada |
+
+### Benefícios dos Containers
+- **Menor consumo de recursos**.
+- **Maior portabilidade** entre ambientes.
+- **Escalabilidade facilitada**.
+- **Desenvolvimento e implantação ágil**.
+
+## Introdução ao Docker
+
+### Conceitos Fundamentais do Docker
+- **Imagem**: Blueprint de um container.
+- **Container**: Instância de uma imagem.
+- **Dockerfile**: Receita para criar imagens personalizadas.
+- **Docker Hub**: Repositório de imagens Docker.
+
+Exemplo:
+```docker pull nginx```
+

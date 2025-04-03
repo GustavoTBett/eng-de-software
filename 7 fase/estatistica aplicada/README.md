@@ -96,3 +96,310 @@
   - **Exemplo**: Relação entre tamanho do código e número de defeitos em software.  
 
 ---
+
+# **Python Fundamentos – Biblioteca Pandas e NumPy – Parte 01**  
+### **Disciplina: Estatística Aplicada à Engenharia de Software**  
+#### **Prof. Me. Max Gabriel Steiner**  
+
+---
+
+## **1. Introdução à Biblioteca Pandas e NumPy**  
+
+### **Pandas**  
+- Utilizado para ler e manipular dados, como arquivos CSV.  
+- **Estruturas principais:**  
+  - **Series**: Estrutura unidimensional que pode conter qualquer tipo de dado.  
+  - **DataFrame**: Estrutura bidimensional semelhante a uma planilha.  
+  - **Index**: Estrutura que fornece rótulos para as linhas e colunas.  
+
+### **NumPy**  
+- Suporte para **arrays multidimensionais** e **operações matemáticas** eficientes.  
+
+#### **Exemplo de criação de uma matriz NumPy e operação:**  
+
+```
+import numpy as np
+
+# Criando uma matriz NumPy
+matriz = np.array([[1, 2, 3], [4, 5, 6]])
+
+# Multiplicação por 2
+resultado = matriz * 2
+
+print(matriz)
+print(resultado)
+```  
+
+---
+
+## **2. Biblioteca Pandas**  
+
+- **Pandas e NumPy não são módulos built-in** do Python.  
+- Podem ser instalados manualmente ou através do **Anaconda**.  
+
+### **Importando o Pandas:**  
+```
+import pandas as pd
+from pandas import Series, DataFrame
+```  
+
+---
+
+## **3. Estrutura Series**  
+
+- **Series** é um array unidimensional com dados e rótulos (índices).  
+
+#### **Exemplo de criação de uma Series:**  
+
+```
+from pandas import Series
+
+Obj = Series([4, 7, -5, 3])
+print(Obj)
+```  
+
+#### **Verificando o tipo da variável:**  
+```
+type(Obj)  # Retorna <class 'pandas.core.series.Series'>
+```  
+
+#### **Obtendo valores e índices:**  
+```
+print(Obj.values)  # Retorna os valores da série
+print(Obj.index)   # Retorna os índices
+```  
+
+#### **Criando uma Series com índices nomeados:**  
+```
+Obj2 = Series([10, 20, 30, 40], index=['a', 'b', 'c', 'd'])
+print(Obj2)
+```  
+
+#### **Filtrando valores na Series:**  
+```
+print(Obj2[Obj2 > 15])  # Retorna apenas valores maiores que 15
+```  
+
+#### **Verificando se um índice existe:**  
+```
+print('d' in Obj2)  # Retorna True
+```  
+
+#### **Criando uma Series a partir de um dicionário:**  
+```
+dados = {'Futebol': 5200, 'Basquete': 3000, 'Vôlei': 4000}
+Obj3 = Series(dados)
+print(Obj3)
+```  
+
+---
+
+## **4. Estrutura DataFrame**  
+
+- Representa uma **estrutura tabular** semelhante a uma planilha do Excel.  
+- Cada coluna pode ter um tipo de dado diferente.  
+
+#### **Criando um DataFrame a partir de um dicionário:**  
+```
+data = {
+    'Estado': ['SP', 'RJ', 'MG', 'RS'],
+    'Ano': [2000, 2001, 2002, 2003],
+    'População': [1.5, 2.0, 3.0, 4.5]
+}
+
+frame = DataFrame(data)
+print(frame)
+```  
+
+#### **Verificando o tipo da variável:**  
+```
+type(frame)  # Retorna <class 'pandas.core.frame.DataFrame'>
+```  
+
+#### **Acessando colunas específicas:**  
+```
+print(frame['Estado'])  # Retorna apenas a coluna "Estado"
+```  
+
+#### **Criando uma nova coluna no DataFrame:**  
+```
+frame['Débito'] = [100, 200, 300, 400]
+print(frame)
+```  
+
+---
+
+## **5. Manipulação de Dados com Pandas**  
+
+### **Concatenando Séries de Dados:**  
+```
+serie1 = Series([5200, 3000, 4000], index=['Futebol', 'Basquete', 'Vôlei'])
+serie2 = Series([5200, 3000, 4000], index=['Futebol', 'Basquete', 'Vôlei'])
+
+resultado = serie1 + serie2
+print(resultado)
+```  
+
+- Os valores das séries são **somados** onde os índices são iguais.  
+
+### **Nomeando índices e colunas:**  
+```
+Obj3.name = "População"
+Obj3.index.name = "Esporte"
+print(Obj3)
+```  
+
+---
+
+## **Conclusão**  
+
+- **Pandas** é essencial para análise e manipulação de dados estruturados.  
+- **NumPy** é útil para cálculos numéricos e operações matriciais.  
+- **Series** são como arrays unidimensionais com índices.  
+- **DataFrames** são tabelas bidimensionais semelhantes ao Excel.  
+
+Este documento apresentou conceitos fundamentais para começar a utilizar as bibliotecas **Pandas** e **NumPy** em Python. 🚀
+
+
+# **Python Fundamentos – Biblioteca Pandas e NumPy – Parte 02**  
+### **Disciplina: Estatística Aplicada à Engenharia de Software**  
+#### **Prof. Me. Max Gabriel Steiner**  
+
+---
+
+## **1. Introdução ao NumPy e Pandas**  
+
+- Para utilizar a biblioteca **NumPy**, precisamos importá-la no Python.  
+- O Pandas permite visualizar e manipular dados em um **DataFrame**.  
+
+---
+
+## **2. Resumo Estatístico com Pandas**  
+
+- O método **describe()** gera um resumo do DataFrame, incluindo:  
+  - **count**: número total de elementos em cada coluna.  
+  - **mean**: média dos elementos.  
+  - **std**: desvio padrão.  
+  - **min**: valor mínimo.  
+  - **25%, 50%, 75%**: quartis dos dados.  
+  - **max**: valor máximo.  
+
+#### **Exemplo de uso do método describe():**  
+```
+import pandas as pd
+
+# Criando um DataFrame de exemplo
+data = {
+    'Ano': [2001, 2002, 2003, 2004],
+    'População': [1.5, 2.0, 3.0, 4.5]
+}
+
+df = pd.DataFrame(data)
+print(df.describe())
+```  
+
+---
+
+## **3. Verificação de Tipos de Dados**  
+
+Podemos verificar os tipos de valores presentes no Dataset.  
+Exemplo de tipos de colunas:  
+- **Ano**: tipo **inteiro (int)**.  
+- **Estado**: tipo **string (str)**.  
+- **População**: tipo **float**.  
+
+#### **Exemplo de verificação dos tipos das colunas:**  
+```
+print(df.dtypes)
+```  
+
+---
+
+## **4. Índices e Estruturas do DataFrame**  
+
+Podemos acessar informações importantes do DataFrame:  
+
+#### **Visualizando os índices:**  
+```
+print(df.index)
+```  
+
+#### **Visualizando as colunas:**  
+```
+print(df.columns)
+```  
+
+#### **Visualizando os valores:**  
+```
+print(df.values)
+```  
+
+---
+
+## **5. Fatiamento (Slice) de Dados**  
+
+### **Selecionando apenas uma coluna:**  
+```
+print(df['População'])
+```  
+
+### **Selecionando um intervalo de linhas (slice):**  
+Selecionando até a linha **2** (Python usa indexação baseada em zero).  
+```
+print(df[:3])
+```  
+
+---
+
+## **6. Criação de DataFrames**  
+
+Podemos criar um **DataFrame** a partir de um dicionário.  
+
+#### **Exemplo de criação de um DataFrame:**  
+```
+web_stats = {
+    'Dias': [1, 2, 3, 4, 5],
+    'Visitantes': [100, 200, 300, 400, 500],
+    'Taxas': [10, 20, 30, 40, 50]
+}
+
+df_web = pd.DataFrame(web_stats)
+print(df_web)
+```  
+
+### **Definindo um índice personalizado:**  
+Podemos definir uma coluna específica como índice do DataFrame.  
+
+#### **Exemplo:**  
+```
+df_web = df_web.set_index('Dias')
+print(df_web)
+```  
+
+---
+
+## **7. Manipulação Avançada de DataFrames**  
+
+### **Fatiamento por colunas específicas:**  
+Selecionando apenas a coluna **Visitantes**:  
+```
+print(df_web['Visitantes'])
+```  
+
+### **Fatiamento de múltiplas colunas:**  
+Selecionando **Visitantes** e **Taxas**:  
+```
+print(df_web[['Visitantes', 'Taxas']])
+```  
+
+---
+
+## **Conclusão**  
+
+- O Pandas e NumPy são ferramentas poderosas para manipulação e análise de dados.  
+- O método **describe()** fornece um resumo estatístico rápido do DataFrame.  
+- Podemos acessar informações como tipos de dados, índices e colunas do DataFrame.  
+- É possível realizar **fatiamentos** para selecionar partes específicas dos dados.  
+- Podemos criar **DataFrames** personalizados e definir índices específicos.  
+
+Esse documento trouxe exemplos práticos para facilitar o uso das bibliotecas **Pandas** e **NumPy** em Python! 🚀  

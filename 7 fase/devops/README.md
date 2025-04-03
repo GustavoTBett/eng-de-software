@@ -465,3 +465,51 @@ Resources:
 Exemplo:
 ```docker pull nginx```
 
+# DevOps - Aula 05  
+
+## Fundamentos de CI/CD  
+
+### CSD (Continuous Software Development)  
+- Integração Contínua (`CI`): Código integrado e testado automaticamente.  
+- Entrega Contínua (`CD`): Lançamento frequente e confiável.  
+- Automação: Infraestrutura e processos automatizados.  
+- Feedback Contínuo: Monitoramento e melhorias constantes.  
+
+**Benefícios:**  
+- Entregas mais rápidas.  
+- Redução de erros e maior qualidade.  
+- Melhor adaptação às mudanças do mercado.  
+
+## Integração Contínua (`CI`)  
+- **Automação** do processo de construção e teste de código.  
+- Desenvolvedores integram código várias vezes ao dia.  
+- Testes automatizados ajudam a detectar erros rapidamente.  
+
+**Benefícios:**  
+- Detecção precoce de erros.  
+- Redução de riscos de conflitos de código.  
+- Feedback rápido para os desenvolvedores.  
+
+## Entrega Contínua (`CD`)  
+- Extensão da `CI` que automatiza a entrega do software.  
+- Código sempre pronto para implantação em produção.  
+
+**Benefícios:**  
+- Implantações rápidas e frequentes.  
+- Menos erros em produção.  
+- Melhor experiência e satisfação do cliente.  
+
+## CI x CD  
+- `CI` foca na automação da construção e testes.  
+- `CD` foca na automação da entrega.  
+- Juntas, permitem entregas rápidas e de alta qualidade.  
+
+## Ferramentas de CI/CD  
+- `Jenkins, Azure Pipelines, AWS CodePipelines, GitHub Actions, GitLab CI/CD`  
+
+## Implementação de um Pipeline CI/CD  
+1. **Configurar Repositório** (`Git`).  
+2. **Automação do Build** (`Jenkins, Travis CI, CircleCI`).  
+3. **Testes Automatizados** (`JUnit, Selenium, etc.`).  
+4. **Implantação Automatizada** (`Docker, Kubernetes, AWS CodeDeploy`).  
+5. **Monitoramento e Feedback** (`Prometheus, Grafana, New Relic`).  

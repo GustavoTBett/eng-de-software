@@ -991,3 +991,212 @@ class Pessoa {
 - [Black Guidelines](https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html)  
 
 ---
+
+# Resumo - Estruturas de Dados (Clean Code)
+
+## 1. Introdução  
+- Dados podem ser representados de diferentes formas: `structs`, `classes`, `arrays`, `dictionaries`, `records`, etc.  
+
+## 2. Abstração de Dados  
+- Exemplo de classe `Ponto` representando um ponto cartesiano:  
+
+  ```java
+  public class Ponto {
+      public Double x;
+      public Double y;
+  }
+  ```  
+
+- Interface que permite representação em coordenadas cartesianas e polares:  
+
+  ```java
+  public interface Ponto {
+      private Double getX();
+      private Double getY();
+      private Double getR();
+      private Double getTheta();
+      void setCartesiano(Double x, Double y);
+      void setPolar(Double r, Double theta);
+  }
+  ```  
+
+## 3. Anti-simetria entre Dados e Objetos  
+- Objetos podem manipular outros objetos ou serem manipulados.  
+- Objetos de valor (`POJO`) apenas armazenam dados.  
+
+## 4. Lei de Demeter  
+- Um módulo não deve acessar diretamente os detalhes internos de outro objeto.  
+- Métodos devem chamar apenas métodos de:  
+  - Sua própria classe.  
+  - Parâmetros recebidos.  
+  - Atributos internos.  
+  - Objetos criados dentro do próprio método.  
+
+- Exemplo de método chamando outro método da mesma classe:  
+
+  ```java
+  public class RegistroPonto {
+      private DateTime data;
+
+      public void atualizarHorario(DateTime data) {
+          setData(data);
+      }
+
+      private void setData(DateTime data) {
+          this.data = data;
+      }
+  }
+  ```  
+
+- Evitar "transgressão de Demeter":  
+
+  ```java
+  public class RegistroPonto {
+      public void log(Funcionario funcionario) {
+          String nomeSetor = funcionario.getSetor().getNome();
+          Console.WriteLine("O setor " + nomeSetor + " fez um registro de ponto");
+      }
+  }
+  ```  
+
+- **Carrinhos de trem** devem ser evitados:  
+
+  ```java
+  public class MusicPlayer {
+      public void play(MusicFile music) {
+          music.getArtist().getAlbum().getSong().play();
+      }
+  }
+  ```  
+
+## 5. Híbridos e DTOs  
+- **Objetos híbridos**: misturam manipulação e armazenamento de dados, o que deve ser evitado.  
+- **DTOs (Data Transfer Objects)**: classes somente com dados, sem lógica de negócios.  
+- Exemplo de classe tradicional:  
+
+  ```java
+  public class Pessoa {
+      private String nome;
+      private String cpf;
+
+      public String getNome() {
+          return this.nome;
+      }
+
+      public String getCpf() {
+          return this.cpf;
+      }
+
+      public void setNome(String nome) {
+          this.nome = nome;
+      }
+
+      public void setCpf(String cpf) {
+          this.cpf = cpf;
+      }
+  }
+  ```  
+
+- Alternativa mais limpa com `record`:  
+
+  ```java
+  public record Pessoa(String nome, String cpf);
+  ```  
+
+## 6. Active Record  
+- DTOs que possuem métodos como `save()` e `find()`.  
+- Não devem conter regras de negócios.  
+
+## 7. Estruturas de Dados vs Coleções  
+- **Maps vs Arrays**:  
+  - Vetores para processamento ordenado.  
+  - Mapas para buscas rápidas.  
+
+  ```java
+  Map<String, String> mapaFuncionarios = new HashMap<>();
+  ArrayList<String> listaFuncionarios = new ArrayList<>();
+  ```  
+
+- **Lists vs Sets**:  
+  - Listas preservam ordem.  
+  - Conjuntos garantem unicidade dos elementos.  
+
+  ```java
+  List<String> listaFuncionarios = new ArrayList<>();
+  Set<String> grupoFuncionarios = new HashSet<>();
+  ```  
+
+## 8. Boas Práticas  
+- **Evitar heranças profundas**: substituir por composição.  
+
+  ```java
+  public class SerHumano extends SerVivo {}
+  public class Pessoa extends SerHumano {}
+  public class Funcionario extends Pessoa {}
+  public class FuncionarioGerente extends Funcionario {}
+  public class FuncionarioSupervisor extends FuncionarioGerente {}
+  ```  
+
+  - Alternativa com composição:  
+
+  ```java
+  public class Funcionario {
+      private Pessoa pessoa;
+      private Cargo cargo;
+      private Setor setor;
+  }
+  ```  
+
+- **KISS (Keep It Simple, Stupid)**: evitar abstrações desnecessárias.  
+- **Polimorfismo vs Condicionais**: substituir `if/else`* e `switch/case`* por herança e interfaces.  
+
+  ```java
+  if (tipo == "Gerente") {
+      return new Gerente();
+  }
+  ```  
+
+  - Alternativa com `Map`:  
+
+  ```java
+  Map<String, Funcionario> funcionarios = new HashMap<>();
+  funcionarios.put("Gerente", new Gerente());
+  ```  
+
+## 9. Identidade vs Igualdade  
+- Tipos primitivos e Strings são comparados por valor.  
+- Objetos são comparados por identidade.  
+
+  ```java
+  String nome1 = "Marta";
+  String nome2 = "Marta";
+  nome1 == nome2; // true
+  nome1.equals(nome2); // true
+
+  Pessoa pessoa1 = new Pessoa("Marta", "123456789");
+  Pessoa pessoa2 = new Pessoa("Marta", "123456789");
+  pessoa1.equals(pessoa2); // false
+  pessoa1 == pessoa2; // false
+  ```  
+
+- Cuidado ao modificar objetos passados por referência:  
+
+  ```java
+  public void revisaFuncionarios(List<Funcionario> funcionarios) {
+      for (Funcionario funcionario : funcionarios) {
+          if (funcionario.getSalario() > 10000) {
+              funcionario.setSalario(funcionario.getSalario() * 1.1);
+          }
+      }
+  }
+
+  List<Funcionario> funcionarios = new ArrayList<>();
+  funcionarios.add(new Funcionario("Ronaldinho", 10000));
+  funcionarios.add(new Funcionario("Marta", 15000));
+  revisaFuncionarios(funcionarios);
+  ``` 
+
+## 10. Material de Apoio  
+- Artigos e livros sobre Clean Code e Estruturas de Dados.  
+
+[Referências](https://medium.com/codex/clean-code-objects-and-data-structures-summary-1aa5d2058f84)  

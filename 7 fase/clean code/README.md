@@ -1200,3 +1200,295 @@ class Pessoa {
 - Artigos e livros sobre Clean Code e Estruturas de Dados.  
 
 [Referências](https://medium.com/codex/clean-code-objects-and-data-structures-summary-1aa5d2058f84)  
+
+# 📚 Tópico 09 - Tratamento de Erros (Clean Code)
+
+---
+
+## 🚨 O que são Exceções
+
+Exceções permitem a recuperação de uma situação de erro durante a execução do programa.
+
+---
+
+## 🧪 Exemplo de Try-Catch-Finally
+
+```java
+try {
+    // Código que pode lançar uma exceção
+} catch (Exception e) {
+    // Código para lidar com a exceção
+} finally {
+    // Código que sempre será executado
+}
+```
+
+---
+
+## 📤 Lançamento de Exceções
+
+```java
+throw new Exception("Mensagem de erro");
+```
+
+---
+
+## 💥 Let It Crash
+
+Algumas linguagens como *Elixir* e *Erlang* adotam a filosofia de "falhar rápido", permitindo recuperação eficiente.
+
+---
+
+## ✅ Boas Práticas (segundo Clean Code)
+
+### 1. Use exceções ao invés de códigos de erro
+
+Evite:
+```cpp
+int dividir(int a, int b, int &resultado) {
+    if (b == 0) {
+        return -1; // Código de erro para divisão por zero
+    }
+    resultado = a / b;
+    return 0; // Sucesso
+}
+
+int main() {
+    int resultado;
+    if (dividir(10, 0, resultado) == -1) {
+        std::cerr << "Erro: divisão por zero!" << std::endl;
+    } else {
+        std::cout << "Resultado: " << resultado << std::endl;
+    }
+    return 0;
+}
+```
+
+Prefira:
+```cpp
+int dividir(int a, int b) {
+    if (b == 0) {
+        throw std::runtime_error("Divisão por zero não permitida.");
+    }
+    return a / b;
+}
+
+int main() {
+    try {
+        int resultado = dividir(10, 0);
+        std::cout << "Resultado: " << resultado << std::endl;
+    } catch (const std::runtime_error &e) {
+        std::cerr << "Erro: " << e.what() << std::endl;
+    }
+    return 0;
+}
+```
+
+---
+
+### 2. Crie primeiro o try-catch-finally
+
+Planejar o bloco de exceção antes da lógica ajuda a garantir clareza e consistência.
+
+---
+
+### 3. Use exceções não verificadas
+
+Evite exceções que obrigam a declaração de *throws* em métodos intermediários.
+
+---
+
+### 4. Forneça contexto
+
+Inclua na exceção:
+- Onde ocorreu
+- O que causou
+- Qual era o estado atual
+
+---
+
+### 5. Defina o fluxo normal
+
+Evite:
+```java
+public void processOrder(Order order) {
+    if (order == null) {
+        System.out.println("Error: Order is null");
+        return;
+    }
+    if (!order.isValid()) {
+        System.out.println("Error: Invalid order");
+        return;
+    }
+    try {
+        orderProcessor.process(order);
+    } catch (Exception e) {
+        System.out.println("Processing failed: " + e.getMessage());
+    }
+}
+```
+
+Prefira:
+```java
+public void processOrder(Order order) {
+    validateOrder(order);
+    try {
+        orderProcessor.process(order);
+    } catch (ProcessingException e) {
+        logError(e);
+        throw new OrderProcessingException("Falha no processamento", e);
+    }
+}
+
+private void validateOrder(Order order) {
+    if (order == null || !order.isValid()) {
+        throw new InvalidOrderException("Ordem inválida");
+    }
+}
+```
+
+---
+
+### 6. Não retorne null
+
+Use `Optional` ou o padrão *Null Object* ao invés de retornar `null`.
+
+---
+
+### 7. Não passe null
+
+Valide ou use `Optional` para evitar nulos como argumento.
+
+---
+
+## 🧰 Dicas Adicionais
+
+### Null Object Pattern
+
+```java
+class NullCliente extends Cliente {
+    public NullCliente() {
+        super("", "");
+    }
+}
+```
+
+---
+
+### Optional
+
+```java
+Optional<String> resultado = Autenticacao.autenticarUsuario(usuario, senha);
+if (resultado.isPresent()) {
+    System.out.println("Bem-vindo, " + resultado.get());
+} else {
+    System.out.println("Usuário ou senha incorretos.");
+}
+```
+
+---
+
+### Separe lógica de negócio e tratamento de erro
+
+```java
+class PedidoService {
+    public void processarPedido(int pedidoId) {
+        if (pedidoId <= 0) throw new PedidoException("ID inválido");
+        System.out.println("Pedido processado");
+    }
+}
+
+class PedidoController {
+    public void realizarPedido(int pedidoId) {
+        try {
+            pedidoService.processarPedido(pedidoId);
+        } catch (PedidoException e) {
+            System.err.println("Erro: " + e.getMessage());
+        }
+    }
+}
+```
+
+---
+
+### Capture apenas o necessário
+
+```java
+try (BufferedReader reader = new BufferedReader(new FileReader("arquivo.txt"))) {
+    reader.lines().forEach(System.out::println);
+} catch (FileNotFoundException e) {
+    System.err.println("Arquivo não encontrado");
+} catch (IOException e) {
+    System.err.println("Erro ao ler arquivo");
+}
+```
+
+---
+
+### Use finally para limpeza
+
+```java
+Connection conexao = DriverManager.getConnection();
+try {
+    Partidas p = Partidas.carregarPartidas();
+    p.forEach(System.out::println);
+} catch (SQLException e) {
+    System.err.println(e.getMessage());
+} finally {
+    conexao.close();
+}
+```
+
+---
+
+### Logging
+
+```java
+catch (SQLException e) {
+    log.error("Erro ao listar partidas: {}", e.getMessage());
+}
+```
+
+---
+
+### Não use exceções para controle de fluxo
+
+Evite:
+
+```java
+if (numero < 12) {
+    throw new TitularException();
+} else {
+    throw new ReservaException();
+}
+```
+
+---
+
+### Use mensagens de erro significativas
+
+Mensagens claras, mas sem expor informações sensíveis como credenciais.
+
+---
+
+### Crie classes de exceção específicas
+
+Evite usar `Exception` ou `RuntimeException` diretamente.
+
+---
+
+### Ferramentas de Monitoramento
+
+- Sentry
+- Loggly
+- New Relic
+- Datadog
+- Rollbar
+
+---
+
+### Referências
+
+- [Toptal](https://www.toptal.com/abap/clean-code-and-the-art-of-exception-handling)  
+- [Medium - Omar Saibaa](https://medium.com/@omar.saibaa/my-notes-from-clean-code-book-error-handling-a98d6dd7b084)  
+- [Daniel Wisky](https://danielwisky.com.br/2023-01-19-clean-code-manipulacao-de-erros/)

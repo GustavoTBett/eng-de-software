@@ -403,3 +403,47 @@ print(df_web[['Visitantes', 'Taxas']])
 - Podemos criar **DataFrames** personalizados e definir índices específicos.  
 
 Esse documento trouxe exemplos práticos para facilitar o uso das bibliotecas **Pandas** e **NumPy** em Python! 🚀  
+
+# Estatística Aplicada  
+## Amostragem por Grupos  
+**Prof. Me. Max Gabriel Steiner**
+
+---
+
+## Definição
+
+**Amostragem por Grupos (ou Amostragem Cluster)** é uma técnica em que a população é dividida em grupos (clusters), e **um ou mais grupos são selecionados aleatoriamente** para formar a amostra.
+
+---
+
+## Exemplo
+
+- **População total:** 28 indivíduos (neste caso, "28 narutos")
+- **Divisão em grupos:** 4 grupos (identificados como 0, 1, 2 e 3)
+- **Procedimento:** Selecionar **aleatoriamente um dos grupos** para representar toda a população.
+
+---
+
+## Observações
+
+- Utilizada quando é difícil ou caro coletar dados de toda a população.
+- É importante que os grupos sejam **heterogêneos entre si** e **homogêneos internamente**.
+- A representatividade depende da **qualidade da divisão dos grupos**.
+
+---
+
+## Vantagens
+
+- Redução de custos e tempo na coleta de dados.
+- Simplicidade operacional.
+
+## Desvantagens
+
+- Menor precisão comparada à amostragem aleatória simples, caso os grupos não sejam bem definidos.
+
+---
+
+## Aplicações
+
+- Pesquisas geográficas ou em regiões isoladas.
+- Estudos educacionais por turmas ou escolas.

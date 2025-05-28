@@ -513,3 +513,214 @@ Exemplo:
 3. **Testes Automatizados** (`JUnit, Selenium, etc.`).  
 4. **Implantação Automatizada** (`Docker, Kubernetes, AWS CodeDeploy`).  
 5. **Monitoramento e Feedback** (`Prometheus, Grafana, New Relic`).  
+
+# PROVA 2
+
+# 🚀 DevOps – Aula 06
+
+**Tema:** Deploy Contínuo e Infraestrutura em Nuvem  
+**Professor:** Gledson Scotti
+
+---
+
+## ❓ Por que estratégias especiais de deploy?
+
+“No mundo real, não podemos simplesmente desligar o sistema para atualizá-lo.”
+
+### Desafios:
+- Alta disponibilidade (24/7)
+- Integrações e dependências complexas
+- Impacto financeiro de falhas
+- Necessidade de validação real
+
+---
+
+## 💸 Custo de Downtime
+
+### 🛒 E-commerces:
+
+| Tempo | Custo Estimado |
+|-------|----------------|
+| 1 min | R$ 15.000 - 50.000 |
+| 1h    | R$ 900.000 - 3.000.000 |
+| 24h   | R$ 21M - 72M |
+
+### 🏦 Bancos:
+
+| Tempo | Custo Estimado |
+|-------|----------------|
+| 1 min | R$ 300.000 - 1M |
+| 1h    | R$ 18M - 60M |
+| 24h   | R$ 430M - 1.4B |
+
+---
+
+## 🧩 Estratégias de Deploy
+
+### 1. 🔄 Blue-Green Deployment
+> “Como ter um ambiente reserva pronto para assumir a qualquer momento”
+
+✅ Vantagens:
+- Zero downtime
+- Rollback instantâneo
+- Testes realistas
+
+⚠️ Desafios:
+- Duplicação de recursos
+- Sincronização de dados
+
+---
+
+### 2. 🐦 Canary Releases
+> “Como enviar exploradores antes do exército”
+
+📊 Métricas críticas:
+- Taxa de erro
+- Latência
+- Conversões
+
+🛠️ Ferramentas:
+- Spinnaker
+- Argo Rollouts
+- AWS AppMesh
+- GCP Traffic Director
+
+---
+
+### 3. 🎚️ Feature Flags
+> “Separam deploy de release, transformando em eventos discretos”
+
+*```javascript
+if (featureFlags.isEnabled('new-checkout-flow', user)) {
+  showNewCheckout();
+} else {
+  showOldCheckout();
+}
+```*
+
+🛠️ Ferramentas:
+- LaunchDarkly
+- Split.io
+- Flagsmith
+
+📂 Tipos:
+- Release
+- Ops
+- Permissioning
+- Experiment
+
+---
+
+### 4. 🔄 Rolling Updates
+> “Trocar as rodas com o carro em movimento”
+
+✅ Boas práticas:
+- Health checks
+- Compatibilidade entre versões
+- Monitoramento ativo
+
+---
+
+## ☁️ Modelos de Infraestrutura
+
+### 🖥️ Standalone
+- Infraestrutura local (on-premise)
+- Alto custo e baixa escalabilidade
+
+### 🖥️ Virtual Infrastructure
+- Uso de VMs em servidores locais
+- Mais flexível, mas ainda depende de data centers físicos
+
+### 📦 Virtual Applications (Containers)
+- Uso de Docker e orquestradores (ex: Kubernetes)
+- Portável e eficiente
+
+### 🛡️ Private Cloud
+- Nuvem exclusiva da empresa
+- Controle total, mas custo elevado
+
+### ☁️ Hybrid Cloud
+- Combina nuvem privada e pública
+- Equilíbrio entre custo, segurança e escalabilidade
+
+---
+
+## 📉 Limitações da Infraestrutura Tradicional
+
+- Capacidade fixa
+- Alto custo de expansão
+- Manutenção física constante
+
+✅ Nuvem traz:
+- Elasticidade
+- Custos sob demanda
+- Foco no desenvolvimento
+
+---
+
+## 🔧 Modelos de Serviço em Nuvem
+
+### 🧱 IaaS (Infrastructure as a Service)
+> “Seus servidores sem se preocupar com o hardware”
+
+✅ Características:
+- Controle total do sistema
+- Responsável por segurança e updates
+
+📌 Ex: AWS EC2, Azure VMs, GCP Compute Engine
+
+---
+
+### 🎠 PaaS (Platform as a Service)
+> “Playground para desenvolvedores”
+
+✅ Características:
+- Infraestrutura + runtime + middleware gerenciados
+- Foco no código
+
+📌 Ex: Heroku, Google App Engine, Azure App Service
+
+---
+
+### 💻 SaaS (Software as a Service)
+> “Use sem instalar, mantenha sem atualizar”
+
+✅ Características:
+- Acesso via web
+- Sem instalação local
+
+📌 Ex: Gmail, Google Docs, Trello, Salesforce
+
+---
+
+### 🔁 FaaS (Function as a Service)
+> “Serverless: só paga pelo tempo de execução do código”
+
+✅ Características:
+- Executa funções sob demanda
+- Escalável e barato
+
+📌 Ex: AWS Lambda, Azure Functions, Google Cloud Functions
+
+---
+
+## ☁️ Principais Provedores
+
+| Categoria         | AWS                | Azure                | GCP                   |
+|------------------|--------------------|----------------------|------------------------|
+| Computação       | EC2                | Azure VMs            | Compute Engine         |
+| Containers       | ECS / EKS          | AKS                  | GKE                    |
+| FaaS             | AWS Lambda         | Azure Functions      | Cloud Functions        |
+| Storage          | S3                 | Azure Blob           | Cloud Storage          |
+| Relacional (SQL) | RDS                | Azure SQL Database   | Cloud SQL              |
+| NoSQL            | DynamoDB           | CosmosDB             | Firestore / Datastore  |
+| Cache            | ElastiCache        | Azure Redis          | Memorystore            |
+
+---
+
+## 🧠 Quando escolher cada nuvem?
+
+- **AWS:** variedade de serviços, pioneirismo
+- **Azure:** ideal para ambientes Microsoft
+- **GCP:** destaque em dados, IA e Kubernetes
+

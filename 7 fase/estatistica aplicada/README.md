@@ -404,11 +404,141 @@ print(df_web[['Visitantes', 'Taxas']])
 
 Esse documento trouxe exemplos práticos para facilitar o uso das bibliotecas **Pandas** e **NumPy** em Python! 🚀  
 
-# Estatística Aplicada  
-## Amostragem por Grupos  
-**Prof. Me. Max Gabriel Steiner**
+
+# 📘 **Resumo: Amostragem Aleatória Simples**
+
+## 📌 **Conceitos abordados**
+- **Censo:** coleta de dados de toda a população. Exemplo: verificar o peso de pacotes em uma fábrica, quando possível medir todos.
+- **Técnicas de Amostragem:**
+  - Amostragem Aleatória Simples (AAS)
+  - Amostragem Sistemática
+  - Amostragem por Conglomerados
+  - Amostragem Estratificada
+
+## 🎯 **Amostragem Aleatória Simples (AAS)**
+- Todos os elementos da população têm a mesma chance de serem escolhidos.
+- Pode ser feita com:
+  - **TNA** (Tabela de Números Aleatórios)
+  - **Calculadora**
+  - **Python**
+  - **Excel** com `=ALEATÓRIOENTRE()`
+
+## 🧠 **Exemplos Práticos**
+1. **Empresa com 32 funcionários** → Seleção de 5 para pesquisa de atividade física.
+2. **Escola com 1000 alunos** → Seleção de 100 para medição de estatura.
+3. **Agência de viagens com 200 clientes** → Seleção de 10 para pesquisa de satisfação.
+
+## 💻 **Uso de Python para AAS**
+Python pode ser usado para automatizar a escolha de amostras, evitando o uso manual de TNA.
 
 ---
+
+## 🧑‍💻 **Código Python**
+
+```python
+import random
+
+# Exemplo: selecionar 5 pessoas de uma população de 32
+populacao = [
+    "Aristóteles", "Anastácia", "Arnaldo", "Bartolomeu", "Bernardino",
+    "Cardoso", "Carlito", "Cláudio", "Ermílio", "Hercílio",
+    "Ernestino", "Endevaldo", "Francisco", "Felício", "Fabrício",
+    "Geraldo", "Gabriel", "Getúlio", "Hiraldo", "João da Silva",
+    "Joana", "Joaquim", "Joaquina", "José da Silva", "José de Souza",
+    "Josefa", "Josefina", "Maria José", "Ma Cristina", "Mauro",
+    "Paula", "Paulo César"
+]
+
+# Tamanho da amostra
+n = 5
+
+# Seleciona uma amostra aleatória sem reposição
+amostra = random.sample(populacao, n)
+
+print("Amostra selecionada:", amostra)
+```
+
+
+# 📘 **Resumo: Amostragem Estratificada**
+
+## 🧮 **Definição**
+A amostragem estratificada é uma técnica onde a população é dividida em subgrupos (estratos) com características semelhantes, e uma amostra proporcional é retirada de cada estrato.
+
+## 📊 **Exemplo Prático**
+- **População total:** 100 pessoas
+  - **Homens:** 60 (60%)
+  - **Mulheres:** 40 (40%)
+- **Amostra desejada:** 10% da população → 10 pessoas
+  - **Homens na amostra:** 6
+  - **Mulheres na amostra:** 4
+
+Essa divisão proporcional respeita a estrutura da população, garantindo uma representação justa de cada grupo.
+
+## 💻 **Código Python para Amostragem Estratificada**
+
+```python
+import random
+
+# População dividida por estrato
+homens = ["Homem" + str(i) for i in range(1, 61)]
+mulheres = ["Mulher" + str(i) for i in range(1, 41)]
+
+# Tamanho da amostra por estrato
+amostra_homens = random.sample(homens, 6)
+amostra_mulheres = random.sample(mulheres, 4)
+
+# Amostra final
+amostra_final = amostra_homens + amostra_mulheres
+random.shuffle(amostra_final)
+
+print("Amostra estratificada selecionada:", amostra_final)
+```
+
+
+
+# 📘 **Resumo: Amostragem Sistemática**
+
+## 🧮 **Definição**
+A amostragem sistemática é uma técnica em que se seleciona um ponto de partida aleatório e, a partir dele, os elementos são escolhidos com um intervalo constante (k).
+
+## 📊 **Exemplo Prático**
+- **População (N):** 122
+- **Amostra (n):** 10
+- **Intervalo (k):** N/n = 122/10 ≈ 12
+
+### 🔢 Procedimento:
+1. Sortear aleatoriamente um número entre 1 e 12 → por exemplo, 8
+2. Adicionar 12 a cada passo:  
+   8, 20, 32, 44, 56, 68, 80, 92, 104, 116
+
+---
+
+## 💻 **Código Python para Amostragem Sistemática**
+
+```python
+import random
+
+# Definição da população
+populacao = list(range(1, 123))  # População de 1 a 122
+
+# Tamanho da amostra
+n = 10
+N = len(populacao)
+
+# Cálculo do intervalo k
+k = N // n
+
+# Seleciona ponto de partida aleatório entre 1 e k
+inicio = random.randint(1, k)
+
+# Gera amostra sistemática
+amostra = [populacao[i] for i in range(inicio - 1, N, k)][:n]
+
+print("Amostra sistemática selecionada:", amostra)
+```
+
+
+# Amostragem por Grupos  
 
 ## Definição
 

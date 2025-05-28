@@ -1,457 +1,3 @@
-# Processos em Sistemas Operacionais  
-
-
-## 🖥️ Introdução  
-- Aborda conceitos essenciais como concorrência, paralelismo, processos, threads e programação síncrona/assíncrona.  
-- Objetivo: simplificar e esclarecer a relação entre esses conceitos.  
-
----
-
-## 🔄 Monotarefa vs Multitarefa  
-- **Monotarefa**: Executa apenas um processo por vez, deixando recursos ociosos.  
-- **Multitarefa**: Permite executar múltiplas tarefas simultaneamente, utilizando preempção para alternar entre processos.  
-
----
-
-## ⚙️ Processos Sequenciais e Concorrentes  
-- Um **processo** é um contêiner de recursos para execução de tarefas.  
-- **Isolamento**: Processos não compartilham memória diretamente.  
-- **Threads**: São "linhas" de execução dentro de um processo, compartilhando memória.  
-- **Concorrência vs Paralelismo**:  
-  - Concorrência → alternância entre tarefas (exemplo: fila de drive-thru).  
-  - Paralelismo → execução simultânea em múltiplos núcleos de processador.  
-
----
-
-## 🔄 Síncrono vs Assíncrono  
-- **Síncrono**: Uma operação precisa ser concluída antes da próxima (exemplo: PHP).  
-- **Assíncrono**: Várias operações alternam execução sem esperar (exemplo: GO).  
-
----
-
-## 💾 Memória  
-- **Primária (Volátil)**: RAM, Cache, Registradores → rápida, mas perde dados sem energia.  
-- **Secundária (Não Volátil)**: SSD, HD → armazenamento permanente.  
-- **Memória Virtual**: Utiliza SWAP quando a RAM está cheia.  
-
----
-
-## ⚡ Processador  
-- Evolução desde o Intel 4004 até os modernos Intel Core i7.  
-- **Miniaturização** foi essencial para o avanço dos processadores.  
-
----
-
-## 🖥️ Gestão do Sistema Operacional  
-1. **Memory Manager** → Gerenciamento da Memória.  
-2. **File Manager** → Gerenciamento de Arquivos.  
-3. **Process Manager** → Gerenciamento de Processos.  
-4. **Device Manager** → Gerenciamento de Dispositivos.  
-
----
-
-## 🔄 Multiprogramação e Memória Virtual  
-- **Multiprogramação em Memória Real**: Troca processos inteiros entre memória física e virtual.  
-- **Multiprogramação com Memória Virtual**: Transferência de páginas ou segmentos.  
-- **Multiplexação de Processos**: Simulação de execução simultânea no mesmo CPU.  
-
-# 📌 Resumo do Documento: Sistemas de Arquivos Locais  
-
-## 🗂️ Introdução  
-- Os sistemas de arquivos são fundamentais nos sistemas operacionais.  
-- Fornecem uma visão abstrata dos dados persistentes e organizam o acesso a arquivos.  
-
----
-
-## 🖥️ Armazenamento e Requisitos  
-- Aplicações precisam armazenar e recuperar dados além do espaço de endereçamento dos processos.  
-- Três requisitos essenciais para armazenamento de longo prazo:  
-  1. Capacidade para grandes volumes de dados.  
-  2. Persistência dos dados mesmo após o término dos processos.  
-  3. Acesso simultâneo por múltiplos processos.  
-
----
-
-## 📂 Estrutura de Arquivos e Diretórios  
-- **Arquivo**: Sequência de bytes com atributos como tamanho, permissões e dono.  
-- **Diretório**: Mapeia nomes para identificadores de arquivos, podendo conter subdiretórios (estrutura em árvore).  
-- O sistema de arquivos organiza e indexa os arquivos para acesso eficiente.  
-
----
-
-## 🖱️ Acesso aos Arquivos  
-- Pode ser feito via **interface gráfica** ou **linha de comando**.  
-- Funções principais do sistema de arquivos:  
-  - Gerenciamento de arquivos.  
-  - Navegação na estrutura de diretórios.  
-  - Recuperação e armazenamento de dados.  
-
----
-
-## 🔧 Particionamento e Estruturas Internas  
-- **Particionamento**: Divisão do disco em seções.  
-- **Formatação**: Aplica um sistema de arquivos a uma partição.  
-- Estruturas fundamentais:  
-  - **MBR (Master Boot Record)**: Responsável pela inicialização do sistema.  
-  - **Superbloco**: Contém informações essenciais do sistema de arquivos.  
-  - **i-nodes**: Estruturas que armazenam metadados sobre arquivos.  
-
----
-
-## 📜 Tipos de Sistemas de Arquivos  
-### 🏷️ Alguns sistemas de arquivos e suas características:  
-
-| Sistema de Arquivos | Descrição |
-|---------------------|-----------|
-| **BFS** | Utilizado no antigo BeOS, suporta indexação avançada. |
-| **EFS** | Sistema de criptografia no NTFS para segurança de dados. |
-| **ext** | Primeiro sistema de arquivos do Linux, substituído pelo ext2. |
-| **ext3** | Extensão do ext2, com suporte a journaling. |
-| **ext4** | Suporta volumes de até 1 Exbibyte e permite subdiretórios ilimitados. |
-| **FAT** | Popular em sistemas antigos, possui versões como FAT12, FAT16 e FAT32. |
-| **HFS+** | Desenvolvido pela Apple, utiliza estrutura B-tree. |
-| **JFS** | Criado pela IBM, otimizado para multiprocessamento. |
-| **NFS** | Sistema de arquivos distribuído para acesso remoto. |
-| **NTFS** | Utilizado no Windows, suporta recuperação de arquivos. |
-| **ReiserFS** | Projetado para Linux, otimizado para metadados. |
-| **XFS** | Sistema de alto desempenho, com suporte a redimensionamento online. |
-| **ZFS** | Integra gerenciamento de volumes e alta integridade de dados. |
-
----
-
-## 📌 LVM (Logical Volume Manager)  
-- Método de gerenciamento de discos que permite redimensionamento dinâmico.  
-- Permite a combinação de múltiplos discos em volumes lógicos flexíveis.  
-- **Vantagens**:  
-  - Redimensionamento de partições.  
-  - Uso eficiente de discos paralelos.  
-  - Suporte a snapshots.  
-
-  ![lvm](imagens/lvm.png)
-
-# 📂 Guia Completo: Configuração e Expansão de LVM no Linux
-
-## 🔹 O que é LVM?
-O **LVM (Logical Volume Manager)** permite gerenciar discos e partições de forma flexível. Diferente do particionamento tradicional, ele possibilita **adicionar, remover e redimensionar volumes lógicos sem formatar ou perder dados**.
-
----
-
-## 📌 Passo a Passo da Configuração do LVM
-
-### 🟢 **1️⃣ Criar Partições para LVM**
-Usamos o **fdisk** para criar uma partição do tipo `8e` (**Linux LVM**) nos discos `/dev/sdb` e `/dev/sdc`.
-
-```bash
-sudo fdisk /dev/sdb
-```
-
-* Pressione n para criar uma nova partição.
-* Escolha p para partição primária.
-* Aceite os valores padrão (usa todo o disco).
-* Pressione t e digite 8e (Linux LVM).
-* Pressione w para salvar.
-
-### 🔄 Repita o mesmo processo para /dev/sdc.
-
- Verifique as partições criadas:
-
-```bash
-lsblk
-sudo fdisk -l
-```
-
----
-
-## 🟢 2️⃣ Criar o Physical Volume (PV)
-
-Agora que temos partições prontas, informamos ao LVM que elas serão usadas como armazenamento.
-
-```bash
-sudo pvcreate /dev/sdb /dev/sdc
-```
-
-🔍 Verifique os PVs criados:
-
-```bash
-sudo pvscan  # Lista os Physical Volumes disponíveis
-sudo pvdisplay  # Exibe detalhes dos PVs
-```
-
----
-
-## 🟢 3️⃣ Criar o Volume Group (VG)
-
-Agrupamos os Physical Volumes em um Volume Group (VG). Isso nos permite tratar vários discos como um único grande espaço de armazenamento.
-
-```bash
-sudo vgcreate vg_data /dev/sdb /dev/sdc
-```
-
-🔍 Verifique o VG criado:
-
-```bash
-sudo vgdisplay
-```
-
----
-
-## 🟢 4️⃣ Criar um Logical Volume (LV)
-
-Dentro do Volume Group, criamos um Logical Volume (LV) para armazenar dados.
-
-```bash
-sudo lvcreate -L 2G -n lv_storage vg_data
-```
-
-🔍 Verifique o LV criado:
-
-```bash
-sudo lvdisplay
-```
-
----
-
-## 🟢 5️⃣ Formatar e Montar o LV
-
-Agora, formatamos o Logical Volume com ext4 e o montamos.
-
-```bash
-sudo mkfs.ext4 /dev/vg_data/lv_storage  # Formata o LV
-sudo mkdir /mnt/storage  # Cria um ponto de montagem
-sudo mount /dev/vg_data/lv_storage /mnt/storage  # Monta o LV
-```
-
-Adicione ao /etc/fstab para montagem automática:
-
-```bash
-echo "/dev/vg_data/lv_storage /mnt/storage ext4 defaults 0 0" | sudo tee -a /etc/fstab
-```
-
-🔍 Verifique o espaço disponível:
-
-```bash
-df -h
-```
-
----
-
-## 📌 Expansão do Logical Volume (LV)
-
-Agora, simulamos a adição de espaço ao volume lógico.
-
-### 1️⃣ Verificar o Tamanho Atual
-
-```bash
-df -h
-```
-
-### 2️⃣ Expandir o LV
-
-```bash
-sudo lvextend -L +1G /dev/vg_data/lv_storage
-```
-🔹 Isso aumenta o LV em 1GB.
-
-### 3️⃣ Redimensionar o Sistema de Arquivos
-
-```bash
-sudo resize2fs /dev/vg_data/lv_storage
-```
-🔹 Agora o sistema reconhece o espaço extra!
-
-## 🎯 Resumo dos Passos
-* 1️⃣ Criamos partições (fdisk - tipo 8e)
-* 2️⃣ Transformamos as partições em Physical Volumes (pvcreate)
-* 3️⃣ Agrupamos os PVs em um Volume Group (vgcreate)
-* 4️⃣ Criamos um Logical Volume (lvcreate)
-* 5️⃣ Formatamos, montamos e usamos o LV (mkfs.ext4, mount)
-* 6️⃣ Expandimos o volume sem perder dados (lvextend, resize2fs)
-
----
-
-## 🔄 SWAP (Memória Virtual)  
-- Usado quando a RAM está cheia, armazenando dados temporários no disco.  
-- Pode ser ativado e configurado no Linux via terminal.  
-
----
-
-# 📂 Sistemas de Arquivos Distribuídos (SAD)
-
-## 📝 Introdução
-Os **Sistemas de Arquivos Distribuídos (SADs)** são projetados para permitir o acesso a arquivos armazenados em servidores remotos como se estivessem localmente disponíveis. Eles garantem que múltiplos usuários possam compartilhar arquivos de forma transparente, segura e eficiente, independente da localização física dos dados.
-
-Quando bem projetado, um SAD oferece desempenho e confiabilidade similares a sistemas de arquivos locais, enquanto melhora a escalabilidade e a disponibilidade dos dados.
-
-## 🔑 Características Principais
-- **Compartilhamento de Arquivos:** Clientes remotos podem acessar arquivos armazenados em servidores distribuídos.
-- **Estrutura Centralizada:** Mesmo com clientes dispersos, o gerenciamento de arquivos é unificado.
-- **Escalabilidade:** Capacidade de aumentar a quantidade de nós (servidores e clientes) sem comprometer o desempenho.
-- **Tolerância a Falhas:** Se um servidor falhar, o sistema deve continuar funcionando sem perda de dados.
-- **Segurança:** Controle de acesso e autenticação de usuários.
-
----
-
-## ❓ Por Que Utilizar um SAD?
-Os SADs surgiram para resolver problemas de armazenamento e compartilhamento de arquivos em redes distribuídas. Algumas vantagens incluem:
-- **Economia de Espaço:** Não é necessário armazenar arquivos localmente em todas as máquinas.
-- **Gerenciamento Centralizado:** Facilita backups e administração dos dados.
-- **Acesso Remoto:** Possibilidade de acessar arquivos a partir de diferentes dispositivos e locais.
-- **Balanceamento de Carga:** Distribuição eficiente de arquivos entre servidores.
-
----
-
-## ⚙️ Funcionalidades de um SAD
-Os SADs fornecem uma interface para manipulação de arquivos, incluindo:
-- **Abertura e fechamento de arquivos**
-- **Leitura e escrita de dados**
-- **Listagem e busca de arquivos**
-- **Bloqueio de arquivos ou partes deles**
-- **Exclusão e renomeação de arquivos e diretórios**
-
-Além disso, um SAD pode implementar **caching** para melhorar o desempenho e reduzir a latência.
-
----
-
-## 📌 Requisitos de um SAD
-Um SAD deve oferecer:
-1. **Compartilhamento Transparente:** Usuários devem acessar arquivos sem se preocupar com sua localização física.
-2. **Mobilidade do Usuário:** Permite que o usuário trabalhe de diferentes máquinas sem perder o acesso aos seus arquivos.
-3. **Replicação de Arquivos:** Copiar arquivos em múltiplos servidores para aumentar confiabilidade e desempenho.
-4. **Consistência:** Todas as cópias de um arquivo devem permanecer sincronizadas.
-5. **Eficiência e Escalabilidade:** Capacidade de suportar grandes volumes de dados e usuários simultâneos.
-
----
-
-## 🏛️ Arquitetura de um SAD
-Os SADs geralmente seguem o modelo **Cliente-Servidor**, onde:
-- **Cliente:** Solicita operações de arquivos (ler, gravar, modificar, excluir).
-- **Servidor:** Processa solicitações e gerencia os arquivos armazenados.
-
-Existem diferentes formas de armazenamento:
-- **Centralizado:** Todos os arquivos são mantidos em um único servidor.
-- **Distribuído:** Arquivos são distribuídos entre múltiplos servidores.
-
-Outros modelos incluem SADs baseados em **Cluster**, onde múltiplos servidores trabalham em conjunto para aumentar a performance e confiabilidade.
-
----
-
-## 🔧 Serviços de um SAD
-Os SADs oferecem serviços essenciais, incluindo:
-1. **Serviço de Nomes Distribuído:** Localiza arquivos pelo nome ou caminho.
-2. **Serviço de Arquivos Distribuído:** Garante operações como leitura, escrita e controle de acesso.
-3. **Serviço de Diretórios Distribuído:** Organiza arquivos em uma estrutura hierárquica de diretórios e subdiretórios.
-
----
-
-## 📌 Exemplos de SADs
-Existem diversas implementações de SADs, algumas bastante populares:
-- **NFS (Network File System):** Usado em sistemas Unix/Linux, permite acesso remoto a arquivos via RPC.
-- **GFS (Google File System):** Desenvolvido para armazenar grandes volumes de dados do Google.
-- **GlusterFS:** Um sistema de arquivos escalável baseado em blocos distribuídos.
-- **PVFS (Parallel Virtual File System):** Usado para computação de alto desempenho.
-- **HDFS (Hadoop Distributed File System):** Projetado para Big Data e processamento paralelo.
-- **Ceph:** Sistema distribuído usado para armazenamento em nuvem.
-- **Lustre:** Comum em supercomputação.
-- **CODA:** Focado em disponibilidade constante de dados.
-- **DFS (Distributed File System):** Implementação da Microsoft.
-
----
-
-## 📊 Desafios e Melhorias em SADs
-Embora os SADs tragam muitos benefícios, também apresentam desafios:
-- **Latência de Rede:** O tempo de resposta pode ser maior que em sistemas locais.
-- **Consistência:** Manter todas as cópias de um arquivo sincronizadas pode ser complexo.
-- **Gerenciamento de Conflitos:** Quando múltiplos usuários editam o mesmo arquivo simultaneamente.
-- **Segurança:** Proteção contra acessos não autorizados e falhas de autenticação.
-
-### 🔹 Melhorias possíveis:
-- Implementação de **cache local** para acelerar o acesso aos arquivos.
-- Uso de **algoritmos eficientes de replicação** para garantir a consistência dos dados.
-- Aplicação de **técnicas de compressão e compactação** para otimizar a transmissão de arquivos na rede.
-
----
-
-## 📌 Conclusão
-Os **Sistemas de Arquivos Distribuídos (SADs)** são essenciais para a computação moderna, garantindo armazenamento eficiente, compartilhamento de arquivos e escalabilidade para grandes redes e infraestruturas de TI. Eles são amplamente utilizados em ambientes corporativos, nuvem, Big Data e supercomputação.
-
-O avanço das tecnologias de armazenamento distribuído, junto com melhorias em segurança e desempenho, tornam os SADs cada vez mais robustos e adaptáveis às necessidades modernas.
-
----
-
-# Resumo: Padrão ANSI/TIA-942 para Data Centers
-
-## O que é a norma TIA-942?
-A **TIA-942** é um padrão que define os requisitos mínimos para a infraestrutura de um **Data Center (DC)**, abrangendo:
-
-- **HVAC** (Aquecimento, Ventilação e Ar-condicionado)
-- **Energia e iluminação**
-- **Arquitetura e piso elevado**
-- **Redundância e controle de acesso**
-- **Prevenção de incêndios**
-- **Cabeamento estruturado**
-
-## Principais Referências
-A norma TIA-942 faz referência a diversos outros padrões como:
-
-- ANSI/TIA/EIA-568 (Cabeamento de telecomunicações)
-- ANSI/NFPA 70 (Código elétrico nacional)
-- ASHRAE (Diretrizes térmicas para ambientes de processamento de dados)
-
-## Topologia Básica de um Data Center
-Elementos do cabeamento de um **Data Center**:
-
-1. **Cabeamento horizontal**
-2. **Backbone**
-3. **Conexões cruzadas (MC, HC)**
-4. **Áreas de distribuição (MDA, HDA, SDA, ZDA, EDA)**
-
-## Espaços Definidos na TIA-942
-- **Sala de Entrada (EF)**: Interface com operadoras de telecom.
-- **Sala de Telecom (TR)**: Suporte para cabeamento externo à sala de computadores.
-- **Área de Distribuição Principal (MDA)**: Cross-connect principal, aloca switches core.
-- **Área de Distribuição Horizontal (HDA)**: Conexão entre ativos e equipamentos.
-- **Área de Equipamentos (EDA)**: Hospeda servidores e storages.
-
-## Classificação dos Data Centers (Tiers)
-A norma divide os Data Centers em **4 níveis (Tiers)**:
-
-### **Tier I - Básico**
-- Sem redundância, único caminho de distribuição.
-- Falha em qualquer componente pode interromper operações.
-- Até **28.8 horas de downtime anuais** permitidas.
-
-### **Tier II - Componentes Redundantes**
-- Redundância mínima (N+1) para UPS e refrigeração.
-- Dois caminhos de entrada para telecomunicações.
-- Até **22.0 horas de downtime anuais** permitidas.
-
-### **Tier III - Sistema Auto Sustentado**
-- Atendido por pelo menos **duas operadoras de telecom**.
-- Duas **Salas de Entrada (ER)** separadas fisicamente.
-- Permite manutenção sem interrupção.
-- **1.6 horas de downtime anuais** permitidas.
-
-### **Tier IV - Sem Tolerância a Falhas**
-- **Redundância total (2N+1)** para energia e refrigeração.
-- Backbone de cabeamento protegido por dutos fechados.
-- Utilização de duas fontes de energia separadas.
-- **0.4 horas de downtime anuais** permitidas.
-
-## Requisitos de Infraestrutura
-- **Controle ambiental:** Temperatura de **18°C a 27°C**, umidade entre **40% e 55%**.
-- **Piso elevado:** Alturas variam conforme Tier (30cm a 91cm).
-- **Iluminação:** Mínimo de **500 lux** no plano horizontal.
-- **Energia:** Redundância UPS e geradores, tomadas independentes para serviços.
-
-## Resfriamento e Cabeamento
-- **Corredores quentes e frios** para otimização do fluxo de ar.
-- **Cabeamento LSZH** para melhor resistência ao fogo e menor emissão de fumaça.
-
-## Conclusão
-O padrão **TIA-942** estabelece diretrizes essenciais para garantir a **eficiência, segurança e disponibilidade** de Data Centers, sendo a classificação **Tier** um fator crucial na escolha do nível de infraestrutura adequado para cada necessidade.
-
-# PROVA 2
-
 # 📊 Gestão de Data Center e Métricas em TI
 
 Apresentação por **Gledson Scotti**  
@@ -1535,4 +1081,313 @@ docker run -it meucontainer bash
 - Ideal para desenvolvimento, testes e deploy.
 - Containers garantem consistência entre ambientes.
 - Ferramentas visuais facilitam a adoção em ambientes corporativos.
+
+Questão:1
+Qual é o protocolo de transporte usado pelo DHCP?
+R= UDP
+
+Questão:2
+Qual é o propósito principal de uma VLAN?
+R= Criar redes lógicas independentes em uma mesma rede física
+
+Questão:3
+Qual comando habilita o UFW em um sistema Ubuntu?
+R= sudo ufw enable
+
+Questão:4
+Qual protocolo é usado pelo SNMP para atuar na camada de aplicação?
+R= UDP
+
+Questão:5
+Qual é a principal função de um proxy reverso?
+R= Receber requisições e delegá-las ou devolver páginas pré-processadas
+
+Questão:6
+Qual comando SNMP obtém um ramo inteiro de OIDs?
+R= snmpwalk
+
+Questão:7
+Quais das opções abaixo são benefícios do protocolo VTP? (Escolha todas que se aplicam)
+R= Consistência da configuração de VLANs na rede
+   Adição de VLANs plug-and-play
+
+Questão:8
+Quais informações o servidor DHCP pode fornecer ao cliente? (Escolha todas que se aplicam)
+R= Endereço IP temporário.
+   Máscara de rede
+   Nome e endereço IP do servidor DNS
+
+Questão:9
+Quais são os modos de operação do VTP? (Escolha todas que se aplicam)
+R= Servidor.
+   Cliente
+   Transparente
+
+
+Questão:10
+Quais ferramentas são mencionadas como soluções de monitoramento de métricas em TI? (Escolha todas que se aplicam)
+R= Zabbix
+   Nagios
+
+Questão:11
+Qual é a terceira etapa no processo de operação do DHCP, que ocorre após o DHCP Offer e antes do DHCP Ack?
+R= DHCP Request
+
+Questão:12
+Qual comando deve ser usado para atribuir a porta FastEthernet 0/2 de um switch à VLAN estática chamada 'Financeiro' com ID 100?
+R= switchport access vlan 100
+
+
+Questão:13
+Qual é o comando correto para permitir acesso de um IP específico (192.168.0.4) à porta 22 com protocolo TCP usando UFW?
+R= sudo ufw allow from 192.168.0.4 to any port 22 proto tcp
+
+
+Questão:14
+Qual porta do protocolo UDP é utilizada pelo SNMP?
+R= 161
+
+
+Questão:15
+Quais endereços são usados como base para configurar uma VLAN dinâmica?
+R= MAC e IP
+
+Questão:16
+Qual é o nome do pacote que deve ser instalado para configurar o servidor de proxy/cache Squid no Ubuntu, conforme o exercício prático feito em sala de aula?
+R= squid
+
+Questão:17
+Qual comando SNMP é usado para traduzir OIDs de forma textual para numérica ou vice-versa?
+R= snmptranslate
+
+Questão:18
+Qual é a principal diferença entre a virtualização por máquinas virtuais e a virtualização por containers?
+R= A virtualização por containers compartilha partes do kernel do host, resultando em menor sobrecarga.
+
+
+Questão:19
+Qual comando Docker pode ser usado para visualizar informações detalhadas sobre uma imagem, como a imagem "python", incluindo configurações e metadados?
+R= docker image inspect python
+
+
+Questão:20
+Qual é o comando correto para iniciar um container a partir da imagem "ubuntu" na rede personalizada "isolated_satc", em modo interativo, com um terminal alocado e que seja removido automaticamente após a finalização?
+R= docker container run -it --rm --net isolated_satc ubuntu bash
+
+1) Qual é o protocolo de transporte usado pelo DHCP?
+✅ Gabarito: B | Sua resposta: B ✔️
+
+2) Qual é o propósito principal de uma VLAN?
+✅ Gabarito: B | Sua resposta: B ✔️
+
+3) Qual comando habilita o UFW em um sistema Ubuntu?
+✅ Gabarito: B | Sua resposta: B ✔️
+
+4) Qual protocolo é usado pelo SNMP para atuar na camada de aplicação?
+✅ Gabarito: B | Sua resposta: B ✔️
+
+5) Qual é a principal função de um proxy reverso?
+✅ Gabarito: B | Sua resposta: B ✔️
+
+6) Qual tipo de armazenamento é conectado diretamente a um único computador?
+✅ Gabarito: C | Sua resposta: C ✔️
+
+7) Qual comando SNMP obtém um ramo inteiro de OIDs?
+✅ Gabarito: C | Sua resposta: C ✔️
+
+8) Quais são os benefícios do protocolo VTP?
+✅ Gabarito: A, D | Sua resposta: B, A, D ❌
+🔸 Comentário: Letra B está incorreta, pois não é um benefício do VTP.
+
+9) Quais informações o servidor DHCP pode fornecer?
+✅ Gabarito: B, D | Sua resposta: B, C, D ❌
+🔸 Comentário: Letra C (MAC do cliente) não é fornecida pelo servidor DHCP.
+
+10) Modos de operação do VTP:
+✅ Gabarito: A, B, C | Sua resposta: A, B ❌
+🔸 Comentário: Faltou incluir a letra C (Transparente).
+
+11) Protocolos usados por NAS:
+✅ Gabarito: A, B | Sua resposta: B, D ❌
+🔸 Comentário: SNMP (D) não é protocolo típico de compartilhamento usado por NAS.
+
+12) Ferramentas de monitoramento de métricas:
+✅ Gabarito: A, B, D | Sua resposta: A, B, D ✔️
+
+13) Terceira etapa do DHCP:
+✅ Gabarito: B | Sua resposta: B ✔️
+
+14) Comando para atribuir porta a VLAN:
+✅ Gabarito: B | Sua resposta: A ❌
+
+15) Comando UFW para liberar IP/porta:
+✅ Gabarito: B | Sua resposta: B ✔️
+
+16) Porta UDP usada pelo SNMP:
+✅ Gabarito: B | Sua resposta: B ✔️
+
+17) Base para VLAN dinâmica:
+✅ Gabarito: B | Sua resposta: B ✔️
+
+18) Pacote para instalar o Squid:
+✅ Gabarito: A | Sua resposta: B ❌
+
+19) Sistema base do TrueNAS:
+✅ Gabarito: C | Sua resposta: A ❌
+
+20) Comando SNMP para traduzir OIDs:
+✅ Gabarito: D | Sua resposta: D ✔️
+
+✅ Resumo da pontuação:
+Acertos: 14
+
+Erros: 6
+
+Aproveitamento: 70%
+
+Se quiser, posso gerar uma versão corrigida ou em PDF com destaque para estudo. Deseja isso?
+
+
+
+
+
+Você disse:
+MAS TIRANDO O GABARITO DO BLOCO DE NOTAS O QUE ESTÁ CERTO E ERRADO DE VERDADE EXPLICANDO CADA PERGUNTA
+
+
+O ChatGPT disse:
+Perfeito! Vamos analisar cada uma das suas respostas, comparando com o conteúdo técnico correto sem olhar o gabarito presente no bloco de notas. Isso vai garantir que você aprenda o conteúdo de forma fundamentada e entenda o porquê de cada questão estar certa ou errada.
+
+1) Qual é o protocolo de transporte usado pelo DHCP?
+Sua resposta: B) UDP ✅
+Explicação: DHCP (Dynamic Host Configuration Protocol) utiliza o protocolo UDP nas portas 67 (servidor) e 68 (cliente).
+Status: ✔️ Correto
+
+2) Qual é o propósito principal de uma VLAN?
+Sua resposta: B) Criar redes lógicas independentes em uma mesma rede física ✅
+Explicação: VLANs permitem segmentar uma rede física em várias redes lógicas para melhorar a organização e a segurança.
+Status: ✔️ Correto
+
+3) Qual comando habilita o UFW em um sistema Ubuntu?
+Sua resposta: B) sudo ufw enable ✅
+Explicação: Este é o comando correto para ativar o Uncomplicated Firewall (UFW).
+Status: ✔️ Correto
+
+4) Qual protocolo é usado pelo SNMP para atuar na camada de aplicação?
+Sua resposta: B) UDP ✅
+Explicação: O SNMP (Simple Network Management Protocol) usa o UDP por ser mais leve, especialmente na porta 161.
+Status: ✔️ Correto
+
+5) Qual é a principal função de um proxy reverso?
+Sua resposta: B) Receber requisições e delegá-las ou devolver páginas pré-processadas ✅
+Explicação: O proxy reverso atua como intermediário entre clientes e servidores, recebendo requisições e encaminhando conforme necessário.
+Status: ✔️ Correto
+
+6) Qual tipo de armazenamento é conectado diretamente a um único computador?
+Sua resposta: C) DAS ✅
+Explicação: DAS (Direct Attached Storage) é um armazenamento que se conecta diretamente a um computador, sem rede intermediária.
+Status: ✔️ Correto
+
+7) Qual comando SNMP obtém um ramo inteiro de OIDs?
+Sua resposta: C) snmpwalk ✅
+Explicação: snmpwalk percorre toda uma subárvore de OIDs, diferente do snmpget que busca um único valor.
+Status: ✔️ Correto
+
+8) Quais são os benefícios do protocolo VTP? (B - A - D)
+Sua resposta: B, A, D ❌
+Explicação:
+
+A) Correto. Ele garante consistência das VLANs entre switches.
+
+B) Incorreto. Monitoramento não é papel do VTP.
+
+D) Correto. Adição automática de VLANs entre switches.
+Status: ❌ Errado (Letra B inválida)
+
+9) Quais informações o servidor DHCP pode fornecer? (B - C - D)
+Sua resposta: B, C, D ❌
+Explicação:
+
+B) Máscara de rede: Sim
+
+C) Endereço MAC: Não. O cliente envia o MAC, o servidor não fornece isso.
+
+D) Nome e IP do DNS: Sim
+Status: ❌ Errado (Letra C inválida)
+
+10) Modos de operação do VTP (A - B)
+Sua resposta: A, B ❌
+Explicação: Os modos válidos do VTP são:
+
+Servidor (A)
+
+Cliente (B)
+
+Transparente (faltou incluir C)
+Status: ❌ Errado (faltou uma opção correta)
+
+11) Protocolos usados por NAS (B - D)
+Sua resposta: B, D ❌
+Explicação:
+
+A) SMB/CIFS → Correto
+
+B) NFS → Correto
+
+D) SNMP → Não é usado para compartilhamento, e sim para monitoramento
+Status: ❌ Errado (faltou A, e D está errada)
+
+12) Ferramentas de monitoramento (A - B - D)
+Sua resposta: A, B, D ✅
+Explicação: Zabbix, Nagios e MRTG são ferramentas reconhecidas para monitoramento. FreeNAS não é.
+Status: ✔️ Correto
+
+13) Terceira etapa do DHCP (B)
+Sua resposta: B) DHCP Request ✅
+Explicação: Ordem correta:
+
+DHCP Discover
+
+DHCP Offer
+
+DHCP Request
+
+DHCP ACK
+Status: ✔️ Correto
+
+14) Comando para atribuir VLAN (A)
+Sua resposta: A) switchport mode trunk vlan 100 ❌
+Explicação: Para atribuir uma porta a uma VLAN específica em modo de acesso, o comando correto é:
+→ switchport access vlan 100 (letra B)
+Status: ❌ Errado
+
+15) Comando UFW para liberar porta 22 para IP (B)
+Sua resposta: B) sudo ufw allow from 192.168.0.4 to any port 22 proto tcp ✅
+Explicação: A sintaxe está perfeita para liberar SSH (porta 22/TCP) para um IP específico.
+Status: ✔️ Correto
+
+16) Porta UDP do SNMP (B)
+Sua resposta: B) 161 ✅
+Explicação: SNMP usa a porta UDP 161 para requisições.
+Status: ✔️ Correto
+
+17) Base para configurar VLAN dinâmica (B)
+Sua resposta: B) MAC e IP ✅
+Explicação: VLANs dinâmicas geralmente são atribuídas com base no MAC address ou atributos de autenticação.
+Status: ✔️ Correto
+
+18) Pacote do Squid (B)
+Sua resposta: B) squid3 ❌
+Explicação: A versão padrão atual do pacote é squid, não mais squid3 (obsoleto nas versões recentes do Ubuntu).
+Status: ❌ Errado
+
+19) Sistema base do TrueNAS (A)
+Sua resposta: A) Linux ❌
+Explicação: TrueNAS é baseado em FreeBSD, não Linux.
+Status: ❌ Errado
+
+20) Comando SNMP para traduzir OIDs (D)
+Sua resposta: D) snmptranslate ✅
+Explicação: O snmptranslate é usado para converter OIDs entre forma numérica e textual.
+Status: ✔️ Correto
 

@@ -1,0 +1,7 @@
+Trabalho refatoração
+
+Alunos: Gustavo T Bett e Thiago Dimon
+
+Projeto antes da refatoração: https://github.com/DouglasKuerten/sistema-gestao-estacionamento
+Projeto após refatoração(pasta backend): https://github.com/thiagoDimon/sistema-gestao-estacionamento/tree/main/backend
+sonarcloud: https://sonarcloud.io/component_measures?metric=Coverage&id=thiagoDimon_sistema-gestao-estacionamento
